@@ -8,6 +8,7 @@ import Logos from "@/components/logos";
 import Particles from "@/components/ui/particles";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import Script from "next/script";
 
 export default function Home() {
   const [name, setName] = useState<string>("");
@@ -123,6 +124,14 @@ export default function Home() {
           handleSubmit={handleSubmit}
           loading={loading}
         />
+
+        <div className="mt-8 w-full flex justify-center">
+          <blockquote className="twitter-tweet">
+            <a href="https://x.com/thoufic67/status/1962572310726221929"></a>
+          </blockquote>
+        </div>
+
+        <Script src="https://platform.twitter.com/widgets.js" strategy="lazyOnload" />
 
         {/* <Logos /> */}
       </section>
