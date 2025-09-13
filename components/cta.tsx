@@ -34,7 +34,7 @@ export default function CTA() {
           text="Create AI shorts easily in minutes, not in Days"
         />
       </motion.div>
-      <blockquote
+      {/* <blockquote
         className="twitter-tweet flex w-full justify-center"
         data-media-max-width="560">
         <p lang="en" dir="ltr">
@@ -49,7 +49,7 @@ export default function CTA() {
       <Script
         async
         src="https://platform.twitter.com/widgets.js"
-        charSet="utf-8"></Script>
+        charSet="utf-8"></Script> */}
 
       <motion.div variants={itemVariants}>
         <TextBlur
