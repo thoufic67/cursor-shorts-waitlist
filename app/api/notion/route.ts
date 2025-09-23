@@ -25,6 +25,12 @@ export async function POST(request: Request) {
             },
           ],
         },
+        ...(body?.channelLink && {
+          "Channel Link": {
+            type: "url",
+            url: body?.channelLink,
+          },
+        }),
       },
     });
 

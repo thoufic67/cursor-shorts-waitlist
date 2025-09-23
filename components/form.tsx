@@ -10,8 +10,10 @@ import { containerVariants, itemVariants } from "@/lib/animation-variants";
 interface FormProps {
   name: string;
   email: string;
+  channelLink: string;
   handleNameChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleEmailChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleChannelLinkChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: () => void;
   loading: boolean;
 }
@@ -19,8 +21,10 @@ interface FormProps {
 export default function Form({
   name,
   email,
+  channelLink,
   handleNameChange,
   handleEmailChange,
+  handleChannelLinkChange,
   handleSubmit,
   loading,
 }: FormProps) {
@@ -44,6 +48,14 @@ export default function Form({
           placeholder="Your Email Address"
           value={email}
           onChange={handleEmailChange}
+        />
+      </motion.div>
+      <motion.div variants={itemVariants}>
+        <Input
+          type="url"
+          placeholder="Youtube / Instagram / TikTok Link (Optional)"
+          value={channelLink}
+          onChange={handleChannelLinkChange}
         />
       </motion.div>
       <motion.div variants={itemVariants}>

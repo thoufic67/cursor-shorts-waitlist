@@ -36,7 +36,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     );
   }
 
-  const { email, firstname } = await request.json();
+  const { email, firstname, channelLink } = await request.json();
 
   const { data, error } = await resend.emails.send({
     from: "Thoufic<hello@updates.aiflo.space>",

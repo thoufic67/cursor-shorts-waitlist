@@ -2,8 +2,8 @@
 
 import { toast } from "sonner";
 import { useState } from "react";
-import CTA from "@/components/cta";
-import Form from "@/components/form";
+import HeroSection from "@/components/hero-section";
+import FeaturesSection from "@/components/features-section";
 import Logos from "@/components/logos";
 import Particles from "@/components/ui/particles";
 import Header from "@/components/header";
@@ -12,6 +12,7 @@ import Footer from "@/components/footer";
 export default function Home() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [channelLink, setChannelLink] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,6 +21,12 @@ export default function Home() {
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
+  };
+
+  const handleChannelLinkChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setChannelLink(event.target.value);
   };
 
   const isValidEmail = (email: string) => {
@@ -49,7 +56,7 @@ export default function Home() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ firstname: name, email }),
+          body: JSON.stringify({ firstname: name, email, channelLink }),
         });
 
         if (!mailResponse.ok) {
@@ -67,7 +74,7 @@ export default function Home() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name, email }),
+          body: JSON.stringify({ name, email, channelLink }),
         });
 
         if (!notionResponse.ok) {
@@ -89,6 +96,7 @@ export default function Home() {
       success: (data) => {
         setName("");
         setEmail("");
+        setChannelLink("");
         return "Thank you for joining the waitlist 🎉";
       },
       error: (error) => {
@@ -109,25 +117,19 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center overflow-x-clip pt-12 md:pt-24">
-      <section className="flex w-full flex-col items-center px-4 sm:px-6 lg:px-8">
-        {/* <Header /> */}
+    <main className="flex min-h-screen flex-col items-center justify-center overflow-x-clip">
+      <HeroSection
+        name={name}
+        email={email}
+        channelLink={channelLink}
+        handleNameChange={handleNameChange}
+        handleEmailChange={handleEmailChange}
+        handleChannelLinkChange={handleChannelLinkChange}
+        handleSubmit={handleSubmit}
+        loading={loading}
+      />
 
-        <CTA />
-
-        <Form
-          name={name}
-          email={email}
-          handleNameChange={handleNameChange}
-          handleEmailChange={handleEmailChange}
-          handleSubmit={handleSubmit}
-          loading={loading}
-        />
-
-        {/* <Logos /> */}
-      </section>
-
-      {/* <Footer /> */}
+      {/* <FeaturesSection /> */}
 
       <Particles
         quantityDesktop={350}

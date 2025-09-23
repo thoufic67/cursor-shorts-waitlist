@@ -80,3 +80,13 @@ body {
     @apply bg-accent text-yellow-200;
   }
 }
+
+.bg-dot-thick-neutral-300 {
+  background-image: radial-gradient(circle, #d4d4d8 1px, transparent 1px);
+  background-size: 15px 15px;
+}
+
+.dark .bg-dot-thick-neutral-800 {
+  background-image: radial-gradient(circle, #27272a 1px, transparent 1px);
+  background-size: 15px 15px;
+}

@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" className="light" suppressHydrationWarning>
       <meta property="og:image" content="/opengraph.png" />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="1280" />

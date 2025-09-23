@@ -1,0 +1,280 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
+import AnimatedShinyText from "@/components/ui/shimmer-text";
+import { containerVariants, itemVariants } from "@/lib/animation-variants";
+import Form from "@/components/form";
+import Image from "next/image";
+import { ChangeEvent, useState, useRef, useEffect } from "react";
+import { VolumeX, Volume2 } from "lucide-react";
+
+interface HeroSectionProps {
+  name: string;
+  email: string;
+  channelLink: string;
+  handleNameChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleEmailChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleChannelLinkChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: () => void;
+  loading: boolean;
+}
+
+export default function HeroSection({
+  name,
+  email,
+  channelLink,
+  handleNameChange,
+  handleEmailChange,
+  handleChannelLinkChange,
+  handleSubmit,
+  loading,
+}: HeroSectionProps) {
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  const handleCardHover = (index: number) => {
+    setHoveredCard(index);
+    // Play the hovered video
+    if (videoRefs.current[index]) {
+      videoRefs.current[index]?.play().catch(() => {
+        // Handle play promise rejection silently
+      });
+    }
+  };
+
+  const handleCardLeave = () => {
+    // Pause all videos
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+    setHoveredCard(null);
+  };
+
+  const toggleMute = () => {
+    const newMutedState = !isMuted;
+    setIsMuted(newMutedState);
+    // Update all video elements
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.muted = newMutedState;
+      }
+    });
+  };
+
+  return (
+    <section className="relative w-full">
+      <HeroHighlight containerClassName="py-20 px-4">
+        <motion.div
+          className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-12 text-center lg:flex-row"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible">
+          {/* Left Content */}
+          <motion.div className="flex-1 space-y-6" variants={itemVariants}>
+            {/* Badge */}
+            <motion.div variants={itemVariants}>
+              <div className="flex items-center justify-start">
+                <div className="flex w-fit items-center justify-center rounded-full border border-yellow-200/20 bg-yellow-100/10 backdrop-blur-sm"></div>
+              </div>
+            </motion.div>
+
+            {/* Main Heading */}
+            <motion.div variants={itemVariants}>
+              <h1 className="text-5xl font-bold leading-tight text-foreground lg:text-7xl">
+                Create <Highlight className="text-foreground">viral</Highlight>{" "}
+                videos in minutes.
+              </h1>
+            </motion.div>
+
+            {/* Description */}
+            <motion.div variants={itemVariants}>
+              <p className="mx-auto max-w-lg text-xl leading-relaxed text-muted-foreground">
+                Create AI Videos in minutes. Our AI creation tool creates viral
+                AI videos for you.
+              </p>
+            </motion.div>
+
+            {/* CTA Form */}
+            <motion.div
+              variants={itemVariants}
+              className="mx-auto w-full max-w-md">
+              <Form
+                name={name}
+                email={email}
+                channelLink={channelLink}
+                handleNameChange={handleNameChange}
+                handleEmailChange={handleEmailChange}
+                handleChannelLinkChange={handleChannelLinkChange}
+                handleSubmit={handleSubmit}
+                loading={loading}
+              />
+            </motion.div>
+
+            {/* Trust Indicators */}
+            {/* <motion.div
+              variants={itemVariants}
+              className="flex items-center gap-4 pt-8">
+              <div className="flex -space-x-2">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <div
+                    key={i}
+                    className="h-10 w-10 rounded-full border-2 border-white bg-gradient-to-r from-purple-400 to-pink-400 dark:border-gray-900"
+                  />
+                ))}
+              </div>
+              <div className="flex items-center gap-1">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <span key={star} className="text-lg text-yellow-400">
+                    ⭐
+                  </span>
+                ))}
+              </div>
+              <p className="text-muted-foreground">
+                Trusted by 27,000+ creators
+              </p>
+            </motion.div> */}
+          </motion.div>
+
+          {/* Right Content - Video Player */}
+          {false && (
+            <motion.div className="h-full flex-1" variants={itemVariants}>
+              <div className="relative mx-auto">
+                {/* Interactive Video Demo Stack */}
+                <div className="relative mx-auto mt-8 w-full">
+                  {[
+                    {
+                      thumbnail:
+                        "https://images.pexels.com/photos/1322185/pexels-photo-1322185.jpeg?auto=compress&cs=tinysrgb&w=160&h=240&fit=crop",
+                      videoSrc:
+                        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                      caption: "her summer in",
+                      subcaption: "the",
+                      category: "Fantasy",
+                      rotation: -15,
+                      zIndex: 10,
+                      translateX: -60,
+                      translateY: 0,
+                      gradient: "from-blue-200 via-cyan-300 to-blue-400",
+                    },
+                    {
+                      thumbnail:
+                        "https://images.pexels.com/photos/6077326/pexels-photo-6077326.jpeg?auto=compress&cs=tinysrgb&w=160&h=240&fit=crop",
+                      videoSrc:
+                        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                      caption: "Create viral",
+                      subcaption: "videos in Minutes",
+                      category: "Animation",
+                      rotation: 0,
+                      zIndex: 30,
+                      translateX: 0,
+                      translateY: 0,
+                      gradient: "from-orange-300 via-yellow-400 to-orange-500",
+                    },
+                    {
+                      thumbnail:
+                        "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=160&h=240&fit=crop",
+                      videoSrc:
+                        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                      caption: "ENDLESSLY,",
+                      subcaption: "family table,",
+                      category: "Lifestyle",
+                      rotation: 15,
+                      zIndex: 20,
+                      translateX: 60,
+                      translateY: 0,
+                      gradient: "from-purple-400 via-pink-400 to-purple-500",
+                    },
+                  ].map((card, index) => {
+                    const isCardHovered = hoveredCard === index;
+
+                    return (
+                      <motion.div
+                        key={index}
+                        className="absolute left-1/2 top-1/2 cursor-pointer"
+                        style={{
+                          transformOrigin: "center center",
+                          zIndex: isCardHovered ? 50 : card.zIndex,
+                        }}
+                        initial={{
+                          x: "-50%",
+                          y: "-50%",
+                          translateX: card.translateX,
+                          translateY: card.translateY,
+                          rotate: card.rotation,
+                        }}
+                        animate={{
+                          x: "-50%",
+                          y: "-50%",
+                          translateX: card.translateX,
+                          translateY: card.translateY,
+                          rotate: isCardHovered ? 0 : card.rotation,
+                          scale: isCardHovered ? 1.05 : 1,
+                          opacity: 1,
+                        }}
+                        transition={{
+                          duration: 0.3,
+                          ease: "easeOut",
+                        }}
+                        onMouseEnter={() => handleCardHover(index)}
+                        onMouseLeave={handleCardLeave}>
+                        {/* Mobile Phone Frame */}
+                        <div className="relative h-[500px] w-[240px]">
+                          {/* Phone Shadow */}
+                          <div className="absolute inset-0 translate-y-2 transform rounded-[32px] bg-black/20 blur-lg" />
+
+                          {/* Phone Body */}
+                          <div className="relative h-full w-full rounded-[32px] bg-gradient-to-b from-gray-800 to-gray-900 p-1 shadow-2xl">
+                            {/* Screen */}
+                            <div className="relative h-full w-full overflow-hidden rounded-[28px] bg-black">
+                              {/* Video Content */}
+                              <div className="absolute inset-0">
+                                <video
+                                  ref={(el) => {
+                                    videoRefs.current[index] = el;
+                                  }}
+                                  className="h-full w-full object-cover"
+                                  muted={isMuted}
+                                  loop
+                                  playsInline
+                                  preload="metadata">
+                                  <source
+                                    src={card.videoSrc}
+                                    type="video/mp4"
+                                  />
+                                </video>
+
+                                {/* Mute/Unmute Button */}
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    toggleMute();
+                                  }}
+                                  className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 backdrop-blur-sm transition-all hover:scale-110 hover:bg-black/70">
+                                  {isMuted ? (
+                                    <VolumeX className="h-4 w-4 text-white" />
+                                  ) : (
+                                    <Volume2 className="h-4 w-4 text-white" />
+                                  )}
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </motion.div>
+      </HeroHighlight>
+    </section>
+  );
+}
