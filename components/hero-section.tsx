@@ -80,7 +80,7 @@ export default function HeroSection({
             {/* Badge */}
             <motion.div variants={itemVariants}>
               <div className="flex items-center justify-start">
-                <div className="flex w-fit items-center justify-center rounded-full border border-yellow-200/20 bg-yellow-100/10 backdrop-blur-sm"></div>
+                <div className="flex w-fit items-center justify-center rounded-full border border-blue-200/20 bg-blue-100/10 backdrop-blur-sm"></div>
               </div>
             </motion.div>
 
@@ -130,7 +130,7 @@ export default function HeroSection({
               </div>
               <div className="flex items-center gap-1">
                 {[1, 2, 3, 4, 5].map((star) => (
-                  <span key={star} className="text-lg text-yellow-400">
+                  <span key={star} className="text-lg text-blue-400">
                     ⭐
                   </span>
                 ))}
@@ -174,7 +174,7 @@ export default function HeroSection({
                       zIndex: 30,
                       translateX: 0,
                       translateY: 0,
-                      gradient: "from-orange-300 via-yellow-400 to-orange-500",
+                      gradient: "from-orange-300 via-red-400 to-orange-500",
                     },
                     {
                       thumbnail:
@@ -196,7 +196,7 @@ export default function HeroSection({
                     return (
                       <motion.div
                         key={index}
-                        className="absolute left-1/2 top-1/2 cursor-pointer"
+                        className="absolute left-1/2 top-1/2 cursor-pointer overflow-hidden"
                         style={{
                           transformOrigin: "center center",
                           zIndex: isCardHovered ? 50 : card.zIndex,
@@ -224,10 +224,7 @@ export default function HeroSection({
                         onMouseEnter={() => handleCardHover(index)}
                         onMouseLeave={handleCardLeave}>
                         {/* Mobile Phone Frame */}
-                        <div className="relative h-[500px] w-[240px]">
-                          {/* Phone Shadow */}
-                          <div className="absolute inset-0 translate-y-2 transform rounded-[32px] bg-black/20 blur-lg" />
-
+                        <div className="relative h-[500px] w-[240px] overflow-hidden">
                           {/* Phone Body */}
                           <div className="relative h-full w-full rounded-[32px] bg-gradient-to-b from-gray-800 to-gray-900 p-1 shadow-2xl">
                             {/* Screen */}

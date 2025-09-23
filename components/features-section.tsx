@@ -53,7 +53,7 @@ const TextToVideoSkeleton = () => (
 const AIPhotoSkeleton = () => (
   <div className="grid h-full w-full grid-cols-2 gap-2">
     <div className="rounded-lg bg-gradient-to-br from-pink-400 via-purple-500 to-blue-500" />
-    <div className="rounded-lg bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500" />
+    <div className="rounded-lg bg-gradient-to-br from-green-400 via-orange-500 to-red-500" />
     <div className="rounded-lg bg-gradient-to-br from-green-400 via-teal-500 to-blue-500" />
     <div className="rounded-lg bg-gradient-to-br from-purple-400 via-pink-500 to-red-500" />
   </div>
