@@ -117,7 +117,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center overflow-x-clip">
+    <main className="flex min-h-screen flex-col overflow-x-clip">
       <HeroSection
         name={name}
         email={email}

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 import AnimatedShinyText from "@/components/ui/shimmer-text";
+import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
 import { containerVariants, itemVariants } from "@/lib/animation-variants";
 import Form from "@/components/form";
 import Image from "next/image";
@@ -50,7 +51,7 @@ export default function HeroSection({
     videoRefs.current.forEach((video) => {
       if (video) {
         video.pause();
-        video.currentTime = 0;
+        // video.currentTime = 0;
       }
     });
     setHoveredCard(null);
@@ -68,10 +69,13 @@ export default function HeroSection({
   };
 
   return (
-    <section className="relative w-full">
-      <HeroHighlight containerClassName="py-20 px-4">
+    <section className="relative w-full overflow-hidden">
+      <div className="opacity-10">
+        <BackgroundRippleEffect rows={12} cols={20} cellSize={80} />
+      </div>
+      <HeroHighlight containerClassName="py-20 px-4 relative z-10">
         <motion.div
-          className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-12 text-center lg:flex-row"
+          className="mx-auto flex flex-col items-center justify-between gap-12 text-center lg:flex-row"
           variants={containerVariants}
           initial="hidden"
           animate="visible">
@@ -142,7 +146,7 @@ export default function HeroSection({
           </motion.div>
 
           {/* Right Content - Video Player */}
-          {false && (
+          {true && (
             <motion.div className="h-full flex-1" variants={itemVariants}>
               <div className="relative mx-auto">
                 {/* Interactive Video Demo Stack */}
@@ -150,23 +154,23 @@ export default function HeroSection({
                   {[
                     {
                       thumbnail:
-                        "https://images.pexels.com/photos/1322185/pexels-photo-1322185.jpeg?auto=compress&cs=tinysrgb&w=160&h=240&fit=crop",
+                        "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Toy%20Story.webp",
                       videoSrc:
-                        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                        "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Toystory.mp4",
                       caption: "her summer in",
                       subcaption: "the",
                       category: "Fantasy",
                       rotation: -15,
                       zIndex: 10,
-                      translateX: -60,
+                      translateX: -80,
                       translateY: 0,
                       gradient: "from-blue-200 via-cyan-300 to-blue-400",
                     },
                     {
                       thumbnail:
-                        "https://images.pexels.com/photos/6077326/pexels-photo-6077326.jpeg?auto=compress&cs=tinysrgb&w=160&h=240&fit=crop",
+                        "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/John%20Wick.webp",
                       videoSrc:
-                        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                        "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/john%20wick.mp4",
                       caption: "Create viral",
                       subcaption: "videos in Minutes",
                       category: "Animation",
@@ -178,28 +182,26 @@ export default function HeroSection({
                     },
                     {
                       thumbnail:
-                        "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=160&h=240&fit=crop",
+                        "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Blind%20Man.webp",
                       videoSrc:
-                        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-                      caption: "ENDLESSLY,",
-                      subcaption: "family table,",
+                        "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/french%20sad%20story.mp4",
+                      caption: "French Man looses his sight in accident,",
+                      subcaption: "French Sad Story,",
                       category: "Lifestyle",
                       rotation: 15,
                       zIndex: 20,
-                      translateX: 60,
+                      translateX: 80,
                       translateY: 0,
                       gradient: "from-purple-400 via-pink-400 to-purple-500",
                     },
                   ].map((card, index) => {
-                    const isCardHovered = hoveredCard === index;
-
                     return (
                       <motion.div
                         key={index}
                         className="absolute left-1/2 top-1/2 cursor-pointer overflow-hidden"
                         style={{
                           transformOrigin: "center center",
-                          zIndex: isCardHovered ? 50 : card.zIndex,
+                          zIndex: hoveredCard === index ? 50 : card.zIndex,
                         }}
                         initial={{
                           x: "-50%",
@@ -213,8 +215,8 @@ export default function HeroSection({
                           y: "-50%",
                           translateX: card.translateX,
                           translateY: card.translateY,
-                          rotate: isCardHovered ? 0 : card.rotation,
-                          scale: isCardHovered ? 1.05 : 1,
+                          rotate: card.rotation,
+                          scale: hoveredCard === index ? 1.1 : 1,
                           opacity: 1,
                         }}
                         transition={{
@@ -235,10 +237,12 @@ export default function HeroSection({
                                   ref={(el) => {
                                     videoRefs.current[index] = el;
                                   }}
+                                  poster={card.thumbnail}
                                   className="h-full w-full object-cover"
                                   muted={isMuted}
                                   loop
                                   playsInline
+                                  autoPlay
                                   preload="metadata">
                                   <source
                                     src={card.videoSrc}
