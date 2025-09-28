@@ -183,24 +183,24 @@ export default function Footer() {
           <motion.div
             variants={itemVariants}
             className="flex flex-col items-center justify-between text-sm text-gray-400 md:flex-row">
-            <p>&copy; 2024 Cursorshorts.com. All rights reserved.</p>
-            <div className="mt-2 flex space-x-6 md:mt-0">
+            <p>&copy; 2025 cursorshorts.com. All rights reserved.</p>
+            {/* <div className="mt-2 flex space-x-6 md:mt-0">
               <Link href="#" className="hover: transition-colors">
                 Terms and Conditions
               </Link>
               <Link href="#" className="hover: transition-colors">
                 Privacy Policy
               </Link>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>
 
       <div className="">
-        <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
+        <div className="mx-auto">
           <motion.div variants={itemVariants} className="flex justify-center">
-            <div className="h-24 w-full max-w-md">
-              <TextHoverEffect text="cursorshorts.com" duration={0.3} />
+            <div className="h-12 w-full sm:h-48">
+              <TextHoverEffect text="cursorshorts.com" />
             </div>
           </motion.div>
         </div>

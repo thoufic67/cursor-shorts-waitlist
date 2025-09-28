@@ -3,15 +3,8 @@ import { cn } from "@/lib/utils";
 import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import {
-  IconBrandYoutubeFilled,
-  IconVideo,
-  IconMicrophone,
-  IconRobot,
-  IconDownload,
-  IconPlayerPlay,
-  IconPlayerPause,
-} from "@tabler/icons-react";
+import { containerVariants, itemVariants } from "@/lib/animation-variants";
+import { IconPlayerPlay, IconPlayerPause } from "@tabler/icons-react";
 import { Compare } from "@/components/ui/compare";
 
 export default function FeaturesSectionDemo() {
@@ -19,7 +12,7 @@ export default function FeaturesSectionDemo() {
     {
       title: "Super simple editor",
       description:
-        "Generate compelling scripts with AI. Choose a style, voice, and background to create engaging video content in seconds.",
+        "Edit image, animate, change captions, add effects with just one click",
       skeleton: <SkeletonOne />,
       className:
         "col-span-1 lg:col-span-4 border-b lg:border-r dark:border-neutral-800",
@@ -48,7 +41,12 @@ export default function FeaturesSectionDemo() {
   ];
   return (
     <div className="relative z-20 mx-auto max-w-7xl py-10 lg:py-40">
-      <div className="px-8">
+      <motion.div
+        className="px-8"
+        initial="hidden"
+        variants={containerVariants}
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}>
         <h4 className="mx-auto max-w-5xl text-center text-3xl font-medium tracking-tight text-black dark:text-white lg:text-5xl lg:leading-tight">
           Everything you need to create a viral video
         </h4>
@@ -57,34 +55,36 @@ export default function FeaturesSectionDemo() {
           From idea to viral video, our AI does it all giving you plug-and-play
           tools to create content that spreads in minutes.
         </p>
-      </div>
+      </motion.div>
 
       <div className="relative">
-        <div className="mt-12 grid grid-cols-1 rounded-md dark:border-neutral-800 lg:grid-cols-6">
+        <motion.div
+          className="mt-12 grid grid-cols-1 rounded-md dark:border-neutral-800 lg:grid-cols-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}>
           {features.map((feature) => (
-            <FeatureCard key={feature.title} className={feature.className}>
-              <FeatureTitle>{feature.title}</FeatureTitle>
-              <FeatureDescription>{feature.description}</FeatureDescription>
-              <div className="h-full w-full">{feature.skeleton}</div>
-            </FeatureCard>
+            <motion.div
+              key={feature.title}
+              variants={itemVariants}
+              className={feature.className}>
+              <FeatureCard>
+                <FeatureTitle>{feature.title}</FeatureTitle>
+                <FeatureDescription>{feature.description}</FeatureDescription>
+                <div className="h-full w-full">{feature.skeleton}</div>
+              </FeatureCard>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
 }
 
-const FeatureCard = ({
-  children,
-  className,
-}: {
-  children?: React.ReactNode;
-  className?: string;
-}) => {
+const FeatureCard = ({ children }: { children?: React.ReactNode }) => {
   return (
-    <div className={cn(`relative overflow-hidden p-4 sm:p-8`, className)}>
-      {children}
-    </div>
+    <div className="relative h-full overflow-hidden p-4 sm:p-8">{children}</div>
   );
 };
 
@@ -115,14 +115,18 @@ export const SkeletonOne = () => {
       <div className="group mx-auto h-full w-full bg-white p-5 shadow-2xl dark:bg-neutral-900">
         <div className="flex h-full w-full flex-1 flex-col space-y-2">
           {/* AI Script Generation Interface */}
-          <div className="flex h-full w-full flex-col items-center justify-center rounded-lg bg-gradient-to-b from-blue-50 to-blue-100 p-4 dark:from-blue-950 dark:to-blue-900">
-            <IconRobot className="mb-4 h-16 w-16 text-blue-600 dark:text-blue-400" />
-            <div className="space-y-2 text-center">
-              <div className="mx-auto h-2 w-3/4 rounded bg-blue-200 dark:bg-blue-800"></div>
-              <div className="mx-auto h-2 w-1/2 rounded bg-blue-200 dark:bg-blue-800"></div>
-              <div className="mx-auto h-2 w-2/3 rounded bg-blue-200 dark:bg-blue-800"></div>
-            </div>
-          </div>
+
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="object-bottom-left relative bottom-8 h-full w-full object-cover">
+            <source
+              src="https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Video%20Editor%20Demo%20Compressed.mp4"
+              type="video/mp4"
+            />
+          </video>
         </div>
       </div>
 
@@ -134,19 +138,19 @@ export const SkeletonOne = () => {
 
 export const SkeletonThree = () => {
   return (
-    <div className="group/image relative flex h-full gap-10">
+    <div className="group/image relative flex h-full gap-10 overflow-hidden rounded-lg">
       <div className="group mx-auto h-full w-full bg-transparent dark:bg-transparent">
-        <div className="relative flex h-full w-full flex-1 flex-col space-y-2">
-          <IconBrandYoutubeFilled className="absolute inset-0 z-10 m-auto h-20 w-20 text-red-500" />
-          <div className="flex h-full w-full items-center justify-center rounded-lg bg-gradient-to-br from-red-100 to-red-200 blur-none transition-all duration-200 group-hover/image:blur-md dark:from-red-950 dark:to-red-900">
-            <div className="text-center">
-              <IconVideo className="mx-auto mb-2 h-12 w-12 text-red-600 dark:text-red-400" />
-              <p className="text-sm text-red-800 dark:text-red-200">
-                Demo Video
-              </p>
-            </div>
-          </div>
-        </div>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="relative bottom-12 h-full w-full rounded-lg object-cover object-center">
+          <source
+            src="https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Script%20Writing%20Demo.mp4"
+            type="video/mp4"
+          />
+        </video>
       </div>
     </div>
   );
@@ -272,11 +276,11 @@ export const ImageVideoCompare = () => {
 
 const ImageVideoCompareComponent = () => {
   return (
-    <div className="relative h-20 w-20 overflow-hidden rounded-lg md:h-40 md:w-40">
+    <div className="relative size-40 select-none overflow-hidden rounded-lg">
       <Compare
-        firstImage="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        firstImage="https://assets.cursorshorts.com/cursorshorts/assets/landingPage/JohnWickCathedral.jpg"
         secondImage=""
-        className="h-20 w-20 rounded-lg md:h-40 md:w-40"
+        className="size-40 rounded-lg"
         slideMode="hover"
         showHandlebar={true}
         autoplay={false}
@@ -288,9 +292,9 @@ const ImageVideoCompareComponent = () => {
         loop
         muted
         playsInline
-        poster="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3">
+        poster="https://assets.cursorshorts.com/cursorshorts/assets/landingPage/JohnWickCathedral.jpg">
         <source
-          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          src="https://assets.cursorshorts.com/cursorshorts/assets/landingPage/John%20Wick%20Cathedral%20Video.mp4"
           type="video/mp4"
         />
         Your browser does not support the video tag.
