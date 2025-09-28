@@ -1,18 +1,25 @@
 "use client";
 
 import { toast } from "sonner";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HeroSection from "@/components/hero-section";
 import FeaturesSectionDemo from "@/components/features-section-demo-1";
 import Particles from "@/components/ui/particles";
-
-import Footer from "@/components/footer";
 
 export default function Home() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [channelLink, setChannelLink] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (window.location.hash === "#features") {
+      const featuresSection = document.getElementById("features");
+      if (featuresSection) {
+        featuresSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, []);
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -128,19 +135,19 @@ export default function Home() {
         loading={loading}
       />
 
-      <FeaturesSectionDemo />
+      <div id="features">
+        <FeaturesSectionDemo />
+      </div>
 
       {/* <VideoCreationDemo /> */}
 
-      <Footer />
-
-      <Particles
+      {/* <Particles
         quantityDesktop={350}
         quantityMobile={100}
         ease={80}
-        color={"#F7FF9B"}
+        color={"#fff"}
         refresh
-      />
+      /> */}
     </main>
   );
 }

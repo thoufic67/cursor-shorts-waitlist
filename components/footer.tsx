@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Instagram, Twitter, Linkedin } from "lucide-react";
 import { containerVariants, itemVariants } from "@/lib/animation-variants";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
@@ -183,27 +185,28 @@ export default function Footer() {
           <motion.div
             variants={itemVariants}
             className="flex flex-col items-center justify-between text-sm text-gray-400 md:flex-row">
-            <p>&copy; 2025 cursorshorts.com. All rights reserved.</p>
-            {/* <div className="mt-2 flex space-x-6 md:mt-0">
-              <Link href="#" className="hover: transition-colors">
+            <p>
+              &copy; 2025 <Link href="/">cursorshorts.com</Link>. All rights
+              reserved.
+            </p>
+            <div className="mt-2 flex space-x-6 md:mt-0">
+              <Link href="/terms" className="hover: transition-colors">
                 Terms and Conditions
               </Link>
-              <Link href="#" className="hover: transition-colors">
+              <Link href="/privacy" className="hover: transition-colors">
                 Privacy Policy
               </Link>
-            </div> */}
+            </div>
           </motion.div>
         </div>
       </div>
 
-      <div className="">
-        <div className="mx-auto">
-          <motion.div variants={itemVariants} className="flex justify-center">
-            <div className="h-12 w-full sm:h-48">
-              <TextHoverEffect text="cursorshorts.com" />
-            </div>
-          </motion.div>
-        </div>
+      <div className="mx-auto">
+        <motion.div variants={itemVariants} className="flex justify-center">
+          <div className="h-12 w-full sm:h-48">
+            <TextHoverEffect text="cursorshorts.com" />
+          </div>
+        </motion.div>
       </div>
     </motion.footer>
   );
