@@ -2,6 +2,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Instagram, Twitter, Linkedin } from "lucide-react";
 import { containerVariants, itemVariants } from "@/lib/animation-variants";
+import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 
 export default function Footer() {
   return (
@@ -10,7 +11,7 @@ export default function Footer() {
       initial="hidden"
       animate="visible"
       className="border-t backdrop-blur-sm">
-      <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
+      {/* <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
         <motion.div
           variants={itemVariants}
           className="flex flex-col space-y-4 md:order-1">
@@ -175,7 +176,7 @@ export default function Footer() {
             </div>
           </div>
         </motion.div>
-      </div>
+      </div> */}
 
       <div className="border-t">
         <div className="mx-auto max-w-7xl px-6 py-4 lg:px-8">
@@ -190,6 +191,16 @@ export default function Footer() {
               <Link href="#" className="hover: transition-colors">
                 Privacy Policy
               </Link>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      <div className="">
+        <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
+          <motion.div variants={itemVariants} className="flex justify-center">
+            <div className="h-24 w-full max-w-md">
+              <TextHoverEffect text="cursorshorts.com" duration={0.3} />
             </div>
           </motion.div>
         </div>

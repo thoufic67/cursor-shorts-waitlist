@@ -9,12 +9,15 @@ import {
   IconMicrophone,
   IconRobot,
   IconDownload,
+  IconPlayerPlay,
+  IconPlayerPause,
 } from "@tabler/icons-react";
+import { Compare } from "@/components/ui/compare";
 
 export default function FeaturesSectionDemo() {
   const features = [
     {
-      title: "AI Script Generation",
+      title: "Super simple editor",
       description:
         "Generate compelling scripts with AI. Choose a style, voice, and background to create engaging video content in seconds.",
       skeleton: <SkeletonOne />,
@@ -22,24 +25,23 @@ export default function FeaturesSectionDemo() {
         "col-span-1 lg:col-span-4 border-b lg:border-r dark:border-neutral-800",
     },
     {
-      title: "Realistic AI Images",
+      title: "Realistic Voice, Music, AI Images & videos",
       description:
         "Create stunning, photorealistic images with advanced AI models. Perfect for any video style or genre.",
       skeleton: <SkeletonTwo />,
       className: "border-b col-span-1 lg:col-span-2 dark:border-neutral-800",
     },
     {
-      title: "Watch Demo Videos",
+      title: "AI Script Generation",
       description:
-        "See our AI video creation in action. From script to final video in minutes.",
+        "Generate compelling scripts with AI. Choose a style, voice, and background to create engaging video content in seconds.",
       skeleton: <SkeletonThree />,
       className:
         "col-span-1 lg:col-span-3 lg:border-r  dark:border-neutral-800",
     },
     {
       title: "29 Languages Supported",
-      description:
-        "Deploy and create videos anywhere in the world with our blazing fast, state-of-the-art AI infrastructure.",
+      description: "Create stories in any languages supported by Elevenlabs.",
       skeleton: <SkeletonFour />,
       className: "col-span-1 lg:col-span-3 border-b lg:border-none",
     },
@@ -58,7 +60,7 @@ export default function FeaturesSectionDemo() {
       </div>
 
       <div className="relative">
-        <div className="mt-12 grid grid-cols-1 rounded-md dark:border-neutral-800 lg:grid-cols-6 xl:border">
+        <div className="mt-12 grid grid-cols-1 rounded-md dark:border-neutral-800 lg:grid-cols-6">
           {features.map((feature) => (
             <FeatureCard key={feature.title} className={feature.className}>
               <FeatureTitle>{feature.title}</FeatureTitle>
@@ -151,13 +153,7 @@ export const SkeletonThree = () => {
 };
 
 export const SkeletonTwo = () => {
-  const images = [
-    "https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=2340&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2340&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2340&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2340&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2340&auto=format&fit=crop",
-  ];
+  const components = [VoiceSelector, ImageVideoCompare, VoiceSelector];
 
   const imageVariants = {
     whileHover: {
@@ -174,7 +170,7 @@ export const SkeletonTwo = () => {
   return (
     <div className="relative flex h-full flex-col items-start gap-10 overflow-hidden p-8">
       <div className="-ml-20 flex flex-row">
-        {images.map((image, idx) => (
+        {components.map((Component, idx) => (
           <motion.div
             variants={imageVariants}
             key={"images-first" + idx}
@@ -184,34 +180,22 @@ export const SkeletonTwo = () => {
             whileHover="whileHover"
             whileTap="whileTap"
             className="-mr-4 mt-4 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1 dark:border-neutral-700 dark:bg-neutral-800">
-            <img
-              src={image}
-              alt="AI generated images"
-              width="500"
-              height="500"
-              className="h-20 w-20 shrink-0 rounded-lg object-cover md:h-40 md:w-40"
-            />
+            <Component />
           </motion.div>
         ))}
       </div>
       <div className="flex flex-row">
-        {images.map((image, idx) => (
+        {components.map((Component, idx) => (
           <motion.div
-            key={"images-second" + idx}
+            variants={imageVariants}
+            key={"images-first" + idx}
             style={{
               rotate: Math.random() * 20 - 10,
             }}
-            variants={imageVariants}
             whileHover="whileHover"
             whileTap="whileTap"
             className="-mr-4 mt-4 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1 dark:border-neutral-700 dark:bg-neutral-800">
-            <img
-              src={image}
-              alt="AI generated images"
-              width="500"
-              height="500"
-              className="h-20 w-20 shrink-0 rounded-lg object-cover md:h-40 md:w-40"
-            />
+            <Component />
           </motion.div>
         ))}
       </div>
@@ -275,5 +259,101 @@ export const Globe = ({ className }: { className?: string }) => {
       style={{ width: 600, height: 600, maxWidth: "100%", aspectRatio: 1 }}
       className={className}
     />
+  );
+};
+
+export const ImageVideoCompare = () => {
+  return (
+    <div className="flex items-center justify-center bg-neutral-100 dark:bg-neutral-900">
+      <ImageVideoCompareComponent />
+    </div>
+  );
+};
+
+const ImageVideoCompareComponent = () => {
+  return (
+    <div className="relative h-20 w-20 overflow-hidden rounded-lg md:h-40 md:w-40">
+      <Compare
+        firstImage="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        secondImage=""
+        className="h-20 w-20 rounded-lg md:h-40 md:w-40"
+        slideMode="hover"
+        showHandlebar={true}
+        autoplay={false}
+      />
+      {/* Video element positioned as the second "image" */}
+      <video
+        className="absolute left-0 top-0 z-[18] h-full w-full rounded-lg object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3">
+        <source
+          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  );
+};
+
+export const VoiceSelector = () => {
+  const voices = [
+    { name: "Antoni", description: "Deep and rich", isPlaying: false },
+    { name: "Domi", description: "Confident and strong", isPlaying: false },
+    { name: "Bella", description: "Warm and friendly", isPlaying: true },
+    // { name: "Bryan", description: "Male, old", isPlaying: false },
+    // { name: "Audrey", description: "Female, middle-aged", isPlaying: false },
+  ];
+
+  return (
+    <div className="mx-auto overflow-hidden rounded-lg bg-white p-2 shadow-lg dark:bg-neutral-900 md:h-40 md:w-40">
+      <div className="space-y-4">
+        {voices.map((voice) => (
+          <VoiceItem key={voice.name} voice={voice} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const VoiceItem = ({
+  voice,
+}: {
+  voice: { name: string; description: string; isPlaying: boolean };
+}) => {
+  return (
+    <div className="rounded-lgtransition-colors flex select-none items-center justify-between rounded-lg p-1 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+      <div className="flex-1">
+        <h3 className="text-sm font-medium text-neutral-900 dark:text-neutral-100">
+          {voice.name}
+        </h3>
+        <p className="text-xs text-neutral-500 dark:text-neutral-400">
+          {voice.description}
+        </p>
+      </div>
+
+      <div className="">
+        {voice.isPlaying ? (
+          <button
+            className="rounded-full p-2 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-700"
+            onClick={() => {
+              // No action when pressed as requested
+            }}>
+            <IconPlayerPause className="h-5 w-5 text-neutral-600 dark:text-neutral-400" />
+          </button>
+        ) : (
+          <button
+            className="rounded-full p-2 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-700"
+            onClick={() => {
+              // No action when pressed as requested
+            }}>
+            <IconPlayerPlay className="h-5 w-5 text-neutral-600 dark:text-neutral-400" />
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
