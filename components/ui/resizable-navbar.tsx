@@ -234,7 +234,7 @@ export const NavbarLogo = () => {
         width={30}
         height={30}
       />
-      <span className="font-bold font-medium text-black dark:text-white">
+      <span className="text-lg font-bold font-medium text-black dark:text-white">
         CursorShorts
       </span>
     </Link>

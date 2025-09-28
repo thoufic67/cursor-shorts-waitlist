@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
+import { ThemeProvider } from "next-themes";
 import Footer from "@/components/footer";
 import NavigationBar from "@/components/navbar";
 
@@ -19,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="light" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <meta property="og:image" content="/opengraph.png" />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="1280" />
@@ -31,11 +32,18 @@ export default function RootLayout({
       <meta name="twitter:image:width" content="1280" />
       <meta name="twitter:image:height" content="832" />
       <body className={FigtreeFont.className}>
-        <NavigationBar />
-        {children}
-        <Footer />
-        <Toaster richColors position="top-center" />
-        <Analytics />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NavigationBar />
+          {children}
+          <Footer />
+          <Toaster richColors position="top-center" />
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );

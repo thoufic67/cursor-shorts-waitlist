@@ -2,11 +2,24 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { Instagram, Twitter, Linkedin } from "lucide-react";
+import { Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { containerVariants, itemVariants } from "@/lib/animation-variants";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 
 export default function Footer() {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <motion.footer
       variants={containerVariants}
@@ -189,13 +202,24 @@ export default function Footer() {
               &copy; 2025 <Link href="/">cursorshorts.com</Link>. All rights
               reserved.
             </p>
-            <div className="mt-2 flex space-x-6 md:mt-0">
+            <div className="mt-2 flex items-center space-x-6 md:mt-0">
               <Link href="/terms" className="hover: transition-colors">
                 Terms and Conditions
               </Link>
               <Link href="/privacy" className="hover: transition-colors">
                 Privacy Policy
               </Link>
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="flex items-center justify-center rounded-md p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-100"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-4 w-4" />
+                ) : (
+                  <Moon className="h-4 w-4" />
+                )}
+              </button>
             </div>
           </motion.div>
         </div>

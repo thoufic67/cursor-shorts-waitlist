@@ -225,7 +225,7 @@ export default function HeroSection({
                                 muted={isMuted}
                                 loop
                                 playsInline
-                                autoPlay
+                                // autoPlay
                                 preload="metadata">
                                 <source
                                   src={VIDEO_PREVIEW[1].videoSrc}
