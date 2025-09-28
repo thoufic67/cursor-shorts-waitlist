@@ -13,7 +13,7 @@ const VIDEO_PREVIEW = [
     thumbnail:
       "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Toy%20Story.webp",
     videoSrc:
-      "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Toystory.mp4",
+      "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Toy%20Story%20Video.mp4",
     caption: "her summer in",
     subcaption: "the",
     category: "Fantasy",
@@ -27,7 +27,7 @@ const VIDEO_PREVIEW = [
     thumbnail:
       "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/John%20Wick.webp",
     videoSrc:
-      "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/john%20wick.mp4",
+      "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/John%20Wick%20Video%20(1).mp4",
     caption: "Create viral",
     subcaption: "videos in Minutes",
     category: "Animation",
@@ -41,7 +41,7 @@ const VIDEO_PREVIEW = [
     thumbnail:
       "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Blind%20Man.webp",
     videoSrc:
-      "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/french%20sad%20story.mp4",
+      "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/French%20Sad%20Story%20(1).mp4",
     caption: "French Man looses his sight in accident,",
     subcaption: "French Sad Story,",
     category: "Lifestyle",
