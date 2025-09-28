@@ -8,9 +8,10 @@ export default function PrivacyPolicy() {
         <h2 className="text-2xl font-semibold">Who we are</h2>
         <p>
           CursorShorts is built and operated by{" "}
-          <strong>Mohammed Thoufic</strong> and <strong>Ajan Raj</strong> ("we",
-          "us", or "Company"). This Privacy Policy explains what information we
-          collect, how we use it, who we share it with, and your rights.
+          <strong>Mohammed Thoufic</strong> and <strong>Ajan Raj</strong>{" "}
+          (&quot;we&quot;, &quot;us&quot;, or &quot;Company&quot;). This Privacy
+          Policy explains what information we collect, how we use it, who we
+          share it with, and your rights.
         </p>
       </section>
 
@@ -19,8 +20,8 @@ export default function PrivacyPolicy() {
         <p>
           This policy covers personal data collected and processed when you use
           our website and services at <strong>cursorshorts.com</strong> (the
-          "Service"). By using the Service, you accept the practices described
-          in this policy.
+          &quot;Service&quot;). By using the Service, you accept the practices
+          described in this policy.
         </p>
       </section>
 
@@ -97,8 +98,8 @@ export default function PrivacyPolicy() {
           <li>
             <strong>Google (OAuth & YouTube API):</strong> used for account
             sign-in and to publish videos to YouTube when you explicitly
-            authorize that action. We adhere to Google's API policies and the
-            Limited Use requirements where applicable.
+            authorize that action. We adhere to Google&apos;s API policies and
+            the Limited Use requirements where applicable.
           </li>
           <li>
             <strong>NeonDB:</strong> our primary database provider; data is
@@ -110,10 +111,11 @@ export default function PrivacyPolicy() {
           </li>
           <li>
             <strong>AI & media providers:</strong> ElevenLabs, OpenRouter, and
-            OpenAI — we send prompts and receive generated content (scripts,
-            image prompts, etc.) to create features you request. We do NOT share
-            user data with these providers beyond the prompts/requests you
-            authorize and we do not use your data to train models (see below).
+            OpenAI &mdash; we send prompts and receive generated content
+            (scripts, image prompts, etc.) to create features you request. We do
+            NOT share user data with these providers beyond the prompts/requests
+            you authorize and we do not use your data to train models (see
+            below).
           </li>
         </ul>
       </section>
@@ -156,7 +158,7 @@ export default function PrivacyPolicy() {
           protecting your information. Data you send to CursorShorts is
           transmitted over secure channels (HTTPS/TLS). Your data is stored in
           NeonDB (US). We continuously review security practices, but no system
-          is completely secure — we cannot guarantee absolute protection.
+          is completely secure &mdash; we cannot guarantee absolute protection.
         </p>
       </section>
 
@@ -231,8 +233,8 @@ export default function PrivacyPolicy() {
         <h2 className="text-2xl font-semibold">Policy changes</h2>
         <p>
           We may update this Privacy Policy from time to time. When we make
-          material changes, we will update the "Last updated" date and, where
-          appropriate, provide notice through the Service.
+          material changes, we will update the &quot;Last updated&quot; date
+          and, where appropriate, provide notice through the Service.
         </p>
       </section>
 

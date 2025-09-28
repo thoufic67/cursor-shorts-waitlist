@@ -8,10 +8,10 @@ export default function TermsOfService() {
 
       <section className="mb-10 space-y-4">
         <p>
-          By using <strong>CursorShorts</strong> ("Service" or "Services"), you
-          agree to be bound by these Terms of Service ("Terms"). CursorShorts is
+          By using <strong>CursorShorts</strong> (&quot;Service&quot; or &quot;Services&quot;), you
+          agree to be bound by these Terms of Service (&quot;Terms&quot;). CursorShorts is
           built and operated by <strong>Mohammed Thoufic</strong> and{" "}
-          <strong>Ajan Raj</strong> ("we", "us").
+          <strong>Ajan Raj</strong> (&quot;we&quot;, &quot;us&quot;).
         </p>
         <p>
           We reserve the right to update and change these Terms at any time.
@@ -125,7 +125,7 @@ export default function TermsOfService() {
         <ul className="list-inside list-disc space-y-2">
           <li>
             Your use of the Service is at your sole risk. The Service is
-            provided on an “as is” and “as available” basis.
+            provided on an &quot;as is&quot; and &quot;as available&quot; basis.
           </li>
           <li>
             We use third-party vendors, hosting providers, and AI services to
