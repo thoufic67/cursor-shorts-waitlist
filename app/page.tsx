@@ -3,11 +3,7 @@
 import { toast } from "sonner";
 import { useState } from "react";
 import HeroSection from "@/components/hero-section";
-import FeaturesSection from "@/components/features-section";
-import Logos from "@/components/logos";
 import Particles from "@/components/ui/particles";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
 
 export default function Home() {
   const [name, setName] = useState<string>("");
@@ -93,7 +89,7 @@ export default function Home() {
 
     toast.promise(promise, {
       loading: "Getting you on the waitlist... 🚀",
-      success: (data) => {
+      success: () => {
         setName("");
         setEmail("");
         setChannelLink("");
