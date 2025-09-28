@@ -3,7 +3,8 @@
 import { toast } from "sonner";
 import { useState } from "react";
 import HeroSection from "@/components/hero-section";
-import FeaturesSection from "@/components/features-section";
+import FeaturesSectionDemo from "@/components/features-section-demo-1";
+import VideoCreationDemo from "@/components/video-creation-demo";
 import Logos from "@/components/logos";
 import Particles from "@/components/ui/particles";
 import Header from "@/components/header";
@@ -129,7 +130,11 @@ export default function Home() {
         loading={loading}
       />
 
-      {/* <FeaturesSection /> */}
+      <FeaturesSectionDemo />
+
+      {/* <VideoCreationDemo /> */}
+
+      <Footer />
 
       <Particles
         quantityDesktop={350}
