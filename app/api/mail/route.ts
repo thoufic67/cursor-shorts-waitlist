@@ -4,6 +4,7 @@ import WelcomeTemplate from "../../../emails";
 
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
+import { ipAddress } from "@vercel/functions";
 import { Redis } from "@upstash/redis";
 import { Ratelimit } from "@upstash/ratelimit";
 
@@ -20,8 +21,8 @@ const ratelimit = new Ratelimit({
   limiter: Ratelimit.slidingWindow(2, "1 m"),
 });
 
-export async function POST(request: NextRequest, response: NextResponse) {
-  const ip = request.ip ?? "127.0.0.1";
+export async function POST(request: NextRequest) {
+  const ip = ipAddress(request) ?? "127.0.0.1";
 
   const result = await ratelimit.limit(ip);
 
