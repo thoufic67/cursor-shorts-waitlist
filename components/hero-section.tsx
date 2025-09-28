@@ -2,14 +2,56 @@
 
 import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
-import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
-import AnimatedShinyText from "@/components/ui/shimmer-text";
 import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
 import { containerVariants, itemVariants } from "@/lib/animation-variants";
 import Form from "@/components/form";
-import Image from "next/image";
 import { ChangeEvent, useState, useRef, useEffect } from "react";
 import { VolumeX, Volume2 } from "lucide-react";
+
+const VIDEO_PREVIEW = [
+  {
+    thumbnail:
+      "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Toy%20Story.webp",
+    videoSrc:
+      "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Toystory.mp4",
+    caption: "her summer in",
+    subcaption: "the",
+    category: "Fantasy",
+    rotation: -15,
+    zIndex: 10,
+    translateX: -80,
+    translateY: 0,
+    gradient: "from-blue-200 via-cyan-300 to-blue-400",
+  },
+  {
+    thumbnail:
+      "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/John%20Wick.webp",
+    videoSrc:
+      "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/john%20wick.mp4",
+    caption: "Create viral",
+    subcaption: "videos in Minutes",
+    category: "Animation",
+    rotation: 0,
+    zIndex: 30,
+    translateX: 0,
+    translateY: 0,
+    gradient: "from-orange-300 via-red-400 to-orange-500",
+  },
+  {
+    thumbnail:
+      "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Blind%20Man.webp",
+    videoSrc:
+      "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/french%20sad%20story.mp4",
+    caption: "French Man looses his sight in accident,",
+    subcaption: "French Sad Story,",
+    category: "Lifestyle",
+    rotation: 15,
+    zIndex: 20,
+    translateX: 80,
+    translateY: 0,
+    gradient: "from-purple-400 via-pink-400 to-purple-500",
+  },
+];
 
 interface HeroSectionProps {
   name: string;
@@ -34,7 +76,19 @@ export default function HeroSection({
 }: HeroSectionProps) {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const handleCardHover = (index: number) => {
     setHoveredCard(index);
@@ -150,127 +204,135 @@ export default function HeroSection({
             <motion.div className="h-full flex-1" variants={itemVariants}>
               <div className="relative mx-auto">
                 {/* Interactive Video Demo Stack */}
-                <div className="relative mx-auto mt-8 w-full">
-                  {[
-                    {
-                      thumbnail:
-                        "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Toy%20Story.webp",
-                      videoSrc:
-                        "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Toystory.mp4",
-                      caption: "her summer in",
-                      subcaption: "the",
-                      category: "Fantasy",
-                      rotation: -15,
-                      zIndex: 10,
-                      translateX: -80,
-                      translateY: 0,
-                      gradient: "from-blue-200 via-cyan-300 to-blue-400",
-                    },
-                    {
-                      thumbnail:
-                        "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/John%20Wick.webp",
-                      videoSrc:
-                        "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/john%20wick.mp4",
-                      caption: "Create viral",
-                      subcaption: "videos in Minutes",
-                      category: "Animation",
-                      rotation: 0,
-                      zIndex: 30,
-                      translateX: 0,
-                      translateY: 0,
-                      gradient: "from-orange-300 via-red-400 to-orange-500",
-                    },
-                    {
-                      thumbnail:
-                        "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Blind%20Man.webp",
-                      videoSrc:
-                        "https://assets.cursorshorts.com/cursorshorts/assets/landingPage/french%20sad%20story.mp4",
-                      caption: "French Man looses his sight in accident,",
-                      subcaption: "French Sad Story,",
-                      category: "Lifestyle",
-                      rotation: 15,
-                      zIndex: 20,
-                      translateX: 80,
-                      translateY: 0,
-                      gradient: "from-purple-400 via-pink-400 to-purple-500",
-                    },
-                  ].map((card, index) => {
-                    return (
-                      <motion.div
-                        key={index}
-                        className="absolute left-1/2 top-1/2 cursor-pointer overflow-hidden"
-                        style={{
-                          transformOrigin: "center center",
-                          zIndex: hoveredCard === index ? 50 : card.zIndex,
-                        }}
-                        initial={{
-                          x: "-50%",
-                          y: "-50%",
-                          translateX: card.translateX,
-                          translateY: card.translateY,
-                          rotate: card.rotation,
-                        }}
-                        animate={{
-                          x: "-50%",
-                          y: "-50%",
-                          translateX: card.translateX,
-                          translateY: card.translateY,
-                          rotate: card.rotation,
-                          scale: hoveredCard === index ? 1.1 : 1,
-                          opacity: 1,
-                        }}
-                        transition={{
-                          duration: 0.3,
-                          ease: "easeOut",
-                        }}
-                        onMouseEnter={() => handleCardHover(index)}
-                        onMouseLeave={handleCardLeave}>
-                        {/* Mobile Phone Frame */}
-                        <div className="relative h-[500px] w-[240px] overflow-hidden">
-                          {/* Phone Body */}
-                          <div className="relative h-full w-full rounded-[32px] bg-gradient-to-b from-gray-800 to-gray-900 p-1 shadow-2xl">
-                            {/* Screen */}
-                            <div className="relative h-full w-full overflow-hidden rounded-[28px] bg-black">
-                              {/* Video Content */}
-                              <div className="absolute inset-0">
-                                <video
-                                  ref={(el) => {
-                                    videoRefs.current[index] = el;
-                                  }}
-                                  poster={card.thumbnail}
-                                  className="h-full w-full object-cover"
-                                  muted={isMuted}
-                                  loop
-                                  playsInline
-                                  autoPlay
-                                  preload="metadata">
-                                  <source
-                                    src={card.videoSrc}
-                                    type="video/mp4"
-                                  />
-                                </video>
+                {isMobile ? (
+                  /* Mobile: Single video without transforms */
+                  <div className="mt-8 flex justify-center">
+                    <div className="cursor-pointer overflow-hidden">
+                      {/* Mobile Phone Frame */}
+                      <div className="relative h-[400px] w-[200px] overflow-hidden">
+                        {/* Phone Body */}
+                        <div className="relative h-full w-full rounded-[32px] bg-gradient-to-b from-gray-800 to-gray-900 p-1 shadow-2xl">
+                          {/* Screen */}
+                          <div className="relative h-full w-full overflow-hidden rounded-[28px] bg-black">
+                            {/* Video Content */}
+                            <div className="absolute inset-0">
+                              <video
+                                ref={(el) => {
+                                  videoRefs.current[1] = el;
+                                }}
+                                poster={VIDEO_PREVIEW[1].thumbnail}
+                                className="h-full w-full object-cover"
+                                muted={isMuted}
+                                loop
+                                playsInline
+                                autoPlay
+                                preload="metadata">
+                                <source
+                                  src={VIDEO_PREVIEW[1].videoSrc}
+                                  type="video/mp4"
+                                />
+                              </video>
 
-                                {/* Mute/Unmute Button */}
-                                <button
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    toggleMute();
-                                  }}
-                                  className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 backdrop-blur-sm transition-all hover:scale-110 hover:bg-black/70">
-                                  {isMuted ? (
-                                    <VolumeX className="h-4 w-4 text-white" />
-                                  ) : (
-                                    <Volume2 className="h-4 w-4 text-white" />
-                                  )}
-                                </button>
-                              </div>
+                              {/* Mute/Unmute Button */}
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  toggleMute();
+                                }}
+                                className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 backdrop-blur-sm transition-all hover:scale-110 hover:bg-black/70">
+                                {isMuted ? (
+                                  <VolumeX className="h-4 w-4 text-white" />
+                                ) : (
+                                  <Volume2 className="h-4 w-4 text-white" />
+                                )}
+                              </button>
                             </div>
                           </div>
                         </div>
-                      </motion.div>
-                    );
-                  })}
-                </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  /* Desktop: Full stacked video experience */
+                  <div className="relative mx-auto mt-8 w-full">
+                    {VIDEO_PREVIEW.map((card, index) => {
+                      return (
+                        <motion.div
+                          key={index}
+                          className="absolute left-1/2 top-1/2 cursor-pointer overflow-hidden"
+                          style={{
+                            transformOrigin: "center center",
+                            zIndex: hoveredCard === index ? 50 : card.zIndex,
+                          }}
+                          initial={{
+                            x: "-50%",
+                            y: "-50%",
+                            translateX: card.translateX,
+                            translateY: card.translateY,
+                            rotate: card.rotation,
+                          }}
+                          animate={{
+                            x: "-50%",
+                            y: "-50%",
+                            translateX: card.translateX,
+                            translateY: card.translateY,
+                            rotate: card.rotation,
+                            scale: hoveredCard === index ? 1.1 : 1,
+                            opacity: 1,
+                          }}
+                          transition={{
+                            duration: 0.3,
+                            ease: "easeOut",
+                          }}
+                          onMouseEnter={() => handleCardHover(index)}
+                          onMouseLeave={handleCardLeave}>
+                          {/* Mobile Phone Frame */}
+                          <div className="relative h-[500px] w-[240px] overflow-hidden">
+                            {/* Phone Body */}
+                            <div className="relative h-full w-full rounded-[32px] bg-gradient-to-b from-gray-800 to-gray-900 p-1 shadow-2xl">
+                              {/* Screen */}
+                              <div className="relative h-full w-full overflow-hidden rounded-[28px] bg-black">
+                                {/* Video Content */}
+                                <div className="absolute inset-0">
+                                  <video
+                                    ref={(el) => {
+                                      videoRefs.current[index] = el;
+                                    }}
+                                    poster={card.thumbnail}
+                                    className="h-full w-full object-cover"
+                                    muted={isMuted}
+                                    loop
+                                    playsInline
+                                    autoPlay
+                                    preload="metadata">
+                                    <source
+                                      src={card.videoSrc}
+                                      type="video/mp4"
+                                    />
+                                  </video>
+
+                                  {/* Mute/Unmute Button */}
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      toggleMute();
+                                    }}
+                                    className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 backdrop-blur-sm transition-all hover:scale-110 hover:bg-black/70">
+                                    {isMuted ? (
+                                      <VolumeX className="h-4 w-4 text-white" />
+                                    ) : (
+                                      <Volume2 className="h-4 w-4 text-white" />
+                                    )}
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </motion.div>
           )}

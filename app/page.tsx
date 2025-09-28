@@ -94,7 +94,7 @@ export default function Home() {
 
     toast.promise(promise, {
       loading: "Getting you on the waitlist... 🚀",
-      success: (data) => {
+      success: () => {
         setName("");
         setEmail("");
         setChannelLink("");
