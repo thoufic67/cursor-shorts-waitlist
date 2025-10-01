@@ -153,8 +153,8 @@ export default function HeroSection({
             {/* Description */}
             <motion.div variants={itemVariants}>
               <p className="mx-auto max-w-lg text-xl leading-relaxed text-muted-foreground">
-                Create AI Videos in minutes. Our AI creation tool creates viral
-                AI videos for you.
+                Create videos in minutes. Our AI creation tool creates viral
+                videos for you.
               </p>
             </motion.div>
 
