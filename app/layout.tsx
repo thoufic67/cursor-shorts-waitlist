@@ -10,7 +10,7 @@ import NavigationBar from "@/components/navbar";
 const FigtreeFont = Figtree({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CursorShorts Waitlist",
+  title: "CursorShorts",
   description: "Create AI shorts easily in minutes, not in Days",
 };
 
@@ -25,7 +25,7 @@ export default function RootLayout({
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="1280" />
       <meta property="og:image:height" content="832" />
-      <meta property="og:site_name" content="CursorShorts Waitlist" />
+      <meta property="og:site_name" content="CursorShorts" />
       <meta property="og:url" content="https://cursorshorts.com/" />
       <meta name="twitter:image" content="/opengraph.png" />
       <meta name="twitter:image:type" content="image/png" />
@@ -36,8 +36,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="dark"
           enableSystem
-          disableTransitionOnChange
-        >
+          disableTransitionOnChange>
           <NavigationBar />
           {children}
           <Footer />
