@@ -121,6 +121,69 @@ export default function PrivacyPolicy() {
       </section>
 
       <section className="mb-10 space-y-4">
+        <h2 className="text-2xl font-semibold">
+          Google / YouTube Access &amp; OAuth
+        </h2>
+        <p>
+          CursorShorts lets you connect your Google/YouTube account so you can
+          publish generated videos and view channel analytics inside the app.
+          When you connect YouTube we request the following Google API scopes
+          (exact scope strings shown):
+        </p>
+        <ul className="list-inside list-disc space-y-2 font-mono text-sm">
+          <li>https://www.googleapis.com/auth/youtube</li>
+          <li>https://www.googleapis.com/auth/youtube.upload</li>
+          <li>https://www.googleapis.com/auth/youtube.readonly</li>
+          <li>https://www.googleapis.com/auth/yt-analytics.readonly</li>
+        </ul>
+        <p className="mt-4">
+          <strong>Purpose.</strong> We use these permissions only to perform
+          actions you explicitly request: uploading videos you create, reading
+          channel and video metadata to prevent duplicates and map uploads
+          correctly, and displaying analytics and earnings data in your
+          CursorShorts dashboard. We will not access or use additional YouTube
+          data beyond these purposes.
+        </p>
+        <p>
+          <strong>Token storage &amp; security.</strong> We store OAuth access
+          and refresh tokens encrypted in our database (NeonDB, USA). Tokens are
+          used only to maintain the connection and make API calls on your
+          behalf; we do not share your tokens with third parties.
+        </p>
+        <p>
+          <strong>Retention &amp; caching.</strong> Analytics and metadata
+          pulled from YouTube may be cached for up to 90 days to improve
+          dashboard speed and historical comparison. Media you upload at your
+          request is retained until you delete it or request deletion.
+        </p>
+        <p>
+          <strong>Disconnect &amp; revoke.</strong> To disconnect your YouTube
+          account from CursorShorts: go to Settings → Connected Accounts →
+          &quot;Disconnect YouTube.&quot; Disconnecting will revoke our refresh
+          tokens and stop future API calls. You can also revoke CursorShorts
+          access from your Google Account Permissions page. To request full
+          deletion of all YouTube-related data we store, email{" "}
+          <a
+            href="mailto:contact.cursorshorts@gmail.com"
+            className="text-blue-600 hover:underline">
+            contact.cursorshorts@gmail.com
+          </a>{" "}
+          including the account email. We will confirm deletion when complete.
+        </p>
+        <p>
+          <strong>Limited Use &amp; compliance.</strong> We comply with
+          Google&apos;s API Policies and the Limited Use requirements for
+          protecting user data. If you have questions, contact us at{" "}
+          <a
+            href="mailto:contact.cursorshorts@gmail.com"
+            className="text-blue-600 hover:underline">
+            contact.cursorshorts@gmail.com
+          </a>
+          .
+        </p>
+      </section>
+
+      <section className="mb-10 space-y-4">
         <h2 className="text-2xl font-semibold">Training and model use</h2>
         <p>
           We do <strong>not</strong> use user data to train our own models or to
@@ -147,7 +210,7 @@ export default function PrivacyPolicy() {
             contact.cursorshorts@gmail.com
           </a>{" "}
           with your account email and request. We will process deletion requests
-          in a reasonable timeframe and confirm when deletion is complete.
+          within 30 days and confirm when deletion is complete.
         </p>
       </section>
 
@@ -156,9 +219,10 @@ export default function PrivacyPolicy() {
         <p>
           We implement reasonable technical and organizational measures aimed at
           protecting your information. Data you send to CursorShorts is
-          transmitted over secure channels (HTTPS/TLS). Your data is stored in
-          NeonDB (US). We continuously review security practices, but no system
-          is completely secure &mdash; we cannot guarantee absolute protection.
+          transmitted over secure channels (HTTPS/TLS). Your data, including
+          OAuth access and refresh tokens, is stored encrypted in NeonDB (US).
+          We continuously review security practices, but no system is completely
+          secure &mdash; we cannot guarantee absolute protection.
         </p>
       </section>
 
