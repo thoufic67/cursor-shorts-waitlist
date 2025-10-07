@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
   const { email, firstname, channelLink } = await request.json();
 
   const { data, error } = await resend.emails.send({
-    from: "Thoufic<hello@updates.aiflo.space>",
+    from: "Thoufic<hello@updates.cursorshorts.com>",
     to: [email],
     subject: "Thankyou for wailisting the CursorShorts Waitlist!",
     reply_to: "thoufic@achieveit.ai",
