@@ -39,6 +39,20 @@ export async function POST(request: NextRequest) {
 
   const { email, firstname, channelLink } = await request.json();
 
+  // Add contact to Resend audience
+  try {
+    await resend.contacts.create({
+      email: email,
+      firstName: firstname,
+      unsubscribed: false,
+      audienceId: process.env.RESEND_AUDIENCE_ID!,
+    });
+  } catch (contactError) {
+    // Log the error but don't fail the request
+    // User might already exist in the audience
+    console.error("Failed to add contact to audience:", contactError);
+  }
+
   const { data, error } = await resend.emails.send({
     from: "Thoufic<hello@updates.cursorshorts.com>",
     to: [email],
