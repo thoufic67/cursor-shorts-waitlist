@@ -1,33 +1,15 @@
 import Link from "next/link";
-import { ChangeEvent } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
-import { Input } from "@/components/ui/input";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { EnhancedButton } from "@/components/ui/enhanced-btn";
 import { containerVariants, itemVariants } from "@/lib/animation-variants";
 
 interface FormProps {
-  name: string;
-  email: string;
-  channelLink: string;
-  handleNameChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleEmailChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleChannelLinkChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: () => void;
-  loading: boolean;
+  handleRedirect: () => void;
 }
 
-export default function Form({
-  name,
-  email,
-  channelLink,
-  handleNameChange,
-  handleEmailChange,
-  handleChannelLinkChange,
-  handleSubmit,
-  loading,
-}: FormProps) {
+export default function Form({ handleRedirect }: FormProps) {
   return (
     <motion.div
       className="mt-6 flex w-full max-w-[24rem] flex-col gap-2"
@@ -35,38 +17,14 @@ export default function Form({
       initial="hidden"
       animate="visible">
       <motion.div variants={itemVariants}>
-        <Input
-          type="text"
-          placeholder="Your Name"
-          value={name}
-          onChange={handleNameChange}
-        />
-      </motion.div>
-      <motion.div variants={itemVariants}>
-        <Input
-          type="email"
-          placeholder="Your Email Address"
-          value={email}
-          onChange={handleEmailChange}
-        />
-      </motion.div>
-      <motion.div variants={itemVariants}>
-        <Input
-          type="url"
-          placeholder="Youtube / Instagram / TikTok Link (Optional)"
-          value={channelLink}
-          onChange={handleChannelLinkChange}
-        />
-      </motion.div>
-      <motion.div variants={itemVariants}>
         <EnhancedButton
+          size="lg"
           variant="expandIcon"
           Icon={FaArrowRightLong}
-          onClick={handleSubmit}
+          onClick={handleRedirect}
           iconPlacement="right"
-          className="mt-2 w-full"
-          disabled={loading}>
-          {loading ? "Loading..." : "Join Waitlist!"}
+          className="mt-2 w-full text-lg">
+          Start creating viral videos
         </EnhancedButton>
       </motion.div>
       <motion.div

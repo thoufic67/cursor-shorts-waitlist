@@ -5,7 +5,7 @@ import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
 import { containerVariants, itemVariants } from "@/lib/animation-variants";
 import Form from "@/components/form";
-import { ChangeEvent, useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { VolumeX, Volume2 } from "lucide-react";
 
 const VIDEO_PREVIEW = [
@@ -53,27 +53,7 @@ const VIDEO_PREVIEW = [
   },
 ];
 
-interface HeroSectionProps {
-  name: string;
-  email: string;
-  channelLink: string;
-  handleNameChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleEmailChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleChannelLinkChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: () => void;
-  loading: boolean;
-}
-
-export default function HeroSection({
-  name,
-  email,
-  channelLink,
-  handleNameChange,
-  handleEmailChange,
-  handleChannelLinkChange,
-  handleSubmit,
-  loading,
-}: HeroSectionProps) {
+export default function HeroSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [isMuted, setIsMuted] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
@@ -122,6 +102,13 @@ export default function HeroSection({
     });
   };
 
+  const handleRedirect = () => {
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+    if (appUrl) {
+      window.location.href = appUrl;
+    }
+  };
+
   return (
     <section className="relative w-full overflow-hidden">
       <div className="opacity-10">
@@ -162,16 +149,7 @@ export default function HeroSection({
             <motion.div
               variants={itemVariants}
               className="mx-auto w-full max-w-md">
-              <Form
-                name={name}
-                email={email}
-                channelLink={channelLink}
-                handleNameChange={handleNameChange}
-                handleEmailChange={handleEmailChange}
-                handleChannelLinkChange={handleChannelLinkChange}
-                handleSubmit={handleSubmit}
-                loading={loading}
-              />
+              <Form handleRedirect={handleRedirect} />
             </motion.div>
 
             {/* Trust Indicators */}

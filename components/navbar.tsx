@@ -21,8 +21,11 @@ export default function NavigationBar() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const scrollToWaitlist = () => {
-    router.push("/");
+  const handleLoginClick = () => {
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+    if (appUrl) {
+      window.location.href = appUrl;
+    }
   };
 
   const handleFeatureClick = () => {
@@ -51,8 +54,8 @@ export default function NavigationBar() {
       <NavBody>
         <NavbarLogo />
         <NavItems items={navigation} onItemClick={handleFeatureClick} />
-        <NavbarButton onClick={scrollToWaitlist} variant="primary">
-          Join Waitlist
+        <NavbarButton onClick={handleLoginClick} variant="primary">
+          Login
         </NavbarButton>
       </NavBody>
 
@@ -75,10 +78,10 @@ export default function NavigationBar() {
             </a>
           ))}
           <NavbarButton
-            onClick={scrollToWaitlist}
+            onClick={handleLoginClick}
             variant="primary"
             className="w-full">
-            Join Waitlist
+            Login
           </NavbarButton>
         </MobileNavMenu>
       </MobileNav>
