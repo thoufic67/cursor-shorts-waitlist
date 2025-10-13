@@ -33,8 +33,9 @@ export default function FeaturesSectionDemo() {
         "col-span-1 lg:col-span-3 lg:border-r  dark:border-neutral-800",
     },
     {
-      title: "29 Languages Supported",
-      description: "Create stories in any languages supported by Elevenlabs.",
+      title: "Create in 29 Languages",
+      description:
+        "Create stories in any languages powered by Elevenlabs & Openai.",
       skeleton: <SkeletonFour />,
       className: "col-span-1 lg:col-span-3 border-b lg:border-none",
     },
