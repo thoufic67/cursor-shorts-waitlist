@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "next-themes";
 import Footer from "@/components/footer";
 import NavigationBar from "@/components/navbar";
+import { PHProvider } from "@/components/providers/posthog-provider";
 
 const FigtreeFont = Figtree({ subsets: ["latin"] });
 
@@ -32,17 +33,19 @@ export default function RootLayout({
       <meta name="twitter:image:width" content="1280" />
       <meta name="twitter:image:height" content="832" />
       <body className={FigtreeFont.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange>
-          <NavigationBar />
-          {children}
-          <Footer />
-          <Toaster richColors position="top-center" />
-          <Analytics />
-        </ThemeProvider>
+        <PHProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange>
+            <NavigationBar />
+            {children}
+            <Footer />
+            <Toaster richColors position="top-center" />
+            <Analytics />
+          </ThemeProvider>
+        </PHProvider>
       </body>
     </html>
   );

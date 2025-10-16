@@ -36,10 +36,12 @@ This is a Next.js 14 waitlist application template that uses Notion as a CMS, Re
 ### Environment Variables Required
 ```
 NOTION_SECRET - Notion integration secret key
-NOTION_DB - Notion database ID  
+NOTION_DB - Notion database ID
 RESEND_API_KEY - Resend API key for sending emails
 UPSTASH_REDIS_REST_URL - Upstash Redis URL for rate limiting
 UPSTASH_REDIS_REST_TOKEN - Upstash Redis token
+NEXT_PUBLIC_POSTHOG_KEY - PostHog project API key for analytics
+NEXT_PUBLIC_POSTHOG_HOST - PostHog host URL (optional, defaults to https://app.posthog.com)
 ```
 
 ### Styling & UI

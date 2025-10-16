@@ -13,15 +13,20 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
+import { usePostHog } from "posthog-js/react";
 
 const navigation = [{ name: "Features", link: "#features" }];
 
 export default function NavigationBar() {
+  const posthog = usePostHog();
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
   const handleLoginClick = () => {
+    posthog?.capture('login_button_clicked', {
+      location: 'navbar'
+    });
     const appUrl = process.env.NEXT_PUBLIC_APP_URL;
     if (appUrl) {
       window.location.href = appUrl;

@@ -7,6 +7,7 @@ import { containerVariants, itemVariants } from "@/lib/animation-variants";
 import Form from "@/components/form";
 import { useState, useRef, useEffect } from "react";
 import { VolumeX, Volume2 } from "lucide-react";
+import { usePostHog } from "posthog-js/react";
 
 const VIDEO_PREVIEW = [
   {
@@ -54,6 +55,7 @@ const VIDEO_PREVIEW = [
 ];
 
 export default function HeroSection() {
+  const posthog = usePostHog();
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [isMuted, setIsMuted] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
@@ -103,6 +105,9 @@ export default function HeroSection() {
   };
 
   const handleRedirect = () => {
+    posthog?.capture('login_button_clicked', {
+      location: 'hero_section'
+    });
     const appUrl = process.env.NEXT_PUBLIC_APP_URL;
     if (appUrl) {
       window.location.href = appUrl;
