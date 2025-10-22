@@ -12,7 +12,37 @@ const FigtreeFont = Figtree({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "CursorShorts",
-  description: "Create AI shorts easily in minutes, not in Days",
+  description: "Create Viral AI videos easily",
+  icons: {
+    icon: [
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon/favicon.ico", sizes: "any" },
+    ],
+    apple: "/favicon/apple-touch-icon.png",
+  },
+  openGraph: {
+    title: "CursorShorts",
+    description: "Create Viral AI videos easily",
+    url: "https://cursorshorts.com",
+    siteName: "CursorShorts",
+    images: [
+      {
+        url: "/favicon/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "CursorShorts",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CursorShorts",
+    description: "Create Viral AI videos easily",
+    images: ["/favicon/android-chrome-512x512.png"],
+  },
 };
 
 export default function RootLayout({
