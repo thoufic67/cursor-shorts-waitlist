@@ -66,7 +66,7 @@ export default function RootLayout({
         <PHProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange>
             <NavigationBar />

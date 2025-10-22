@@ -6,7 +6,6 @@ import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect
 import { containerVariants, itemVariants } from "@/lib/animation-variants";
 import Form from "@/components/form";
 import { useState, useRef, useEffect } from "react";
-import { VolumeX, Volume2 } from "lucide-react";
 import { usePostHog } from "posthog-js/react";
 
 const VIDEO_PREVIEW = [
@@ -57,7 +56,6 @@ const VIDEO_PREVIEW = [
 export default function HeroSection() {
   const posthog = usePostHog();
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [isMuted, setIsMuted] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
@@ -93,20 +91,9 @@ export default function HeroSection() {
     setHoveredCard(null);
   };
 
-  const toggleMute = () => {
-    const newMutedState = !isMuted;
-    setIsMuted(newMutedState);
-    // Update all video elements
-    videoRefs.current.forEach((video) => {
-      if (video) {
-        video.muted = newMutedState;
-      }
-    });
-  };
-
   const handleRedirect = () => {
-    posthog?.capture('login_button_clicked', {
-      location: 'hero_section'
+    posthog?.capture("login_button_clicked", {
+      location: "hero_section",
     });
     const appUrl = process.env.NEXT_PUBLIC_APP_URL;
     if (appUrl) {
@@ -205,7 +192,7 @@ export default function HeroSection() {
                                 }}
                                 poster={VIDEO_PREVIEW[1].thumbnail}
                                 className="h-full w-full object-cover"
-                                muted={isMuted}
+                                muted
                                 loop
                                 playsInline
                                 // autoPlay
@@ -215,20 +202,6 @@ export default function HeroSection() {
                                   type="video/mp4"
                                 />
                               </video>
-
-                              {/* Mute/Unmute Button */}
-                              <button
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  toggleMute();
-                                }}
-                                className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 backdrop-blur-sm transition-all hover:scale-110 hover:bg-black/70">
-                                {isMuted ? (
-                                  <VolumeX className="h-4 w-4 text-white" />
-                                ) : (
-                                  <Volume2 className="h-4 w-4 text-white" />
-                                )}
-                              </button>
                             </div>
                           </div>
                         </div>
@@ -283,7 +256,7 @@ export default function HeroSection() {
                                     }}
                                     poster={card.thumbnail}
                                     className="h-full w-full object-cover"
-                                    muted={isMuted}
+                                    muted
                                     loop
                                     playsInline
                                     autoPlay
@@ -293,20 +266,6 @@ export default function HeroSection() {
                                       type="video/mp4"
                                     />
                                   </video>
-
-                                  {/* Mute/Unmute Button */}
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      toggleMute();
-                                    }}
-                                    className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 backdrop-blur-sm transition-all hover:scale-110 hover:bg-black/70">
-                                    {isMuted ? (
-                                      <VolumeX className="h-4 w-4 text-white" />
-                                    ) : (
-                                      <Volume2 className="h-4 w-4 text-white" />
-                                    )}
-                                  </button>
                                 </div>
                               </div>
                             </div>
