@@ -42,7 +42,7 @@ const faqData: FAQItem[] = [
   },
 ];
 
-export default function BillingFAQ() {
+export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
@@ -57,7 +57,7 @@ export default function BillingFAQ() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}>
         <h2 className="mb-4 text-4xl font-medium tracking-tight text-black dark:text-white lg:text-5xl">
-          BILLING
+          FAQ
         </h2>
         <div className="mb-8 h-1 w-24 bg-violet-600" />
       </motion.div>
