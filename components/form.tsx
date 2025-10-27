@@ -32,7 +32,7 @@ export default function Form({ handleRedirect }: FormProps) {
         className="mt-4 flex w-full items-center justify-center gap-1 text-muted-foreground">
         <p>For any queries, reach out at </p>
         <Link
-          href="https://x.com/thoufic67"
+          href="https://x.com/CursorShorts"
           rel="noopener noreferrer"
           target="_blank">
           <FaXTwitter className="hover:text-primary-200 h-4 w-4 transition-all duration-200 ease-linear" />
