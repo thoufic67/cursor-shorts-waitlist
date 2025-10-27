@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import HeroSection from "@/components/hero-section";
 import FeaturesSectionDemo from "@/components/features-section-demo-1";
+import BillingFAQ from "@/components/billing-faq";
 import Particles from "@/components/ui/particles";
 
 export default function Home() {
@@ -22,6 +23,8 @@ export default function Home() {
       <div id="features">
         <FeaturesSectionDemo />
       </div>
+
+      <BillingFAQ />
 
       {/* <VideoCreationDemo /> */}
 
