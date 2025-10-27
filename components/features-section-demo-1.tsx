@@ -10,34 +10,36 @@ import { Compare } from "@/components/ui/compare";
 export default function FeaturesSectionDemo() {
   const features = [
     {
-      title: "Super simple editor",
-      description:
-        "Edit image, animate, change captions, add effects with just one click",
-      skeleton: <SkeletonOne />,
+      title: "AI script writer",
+      description: "AI that writes high quality viral scripts",
+      skeleton: <SkeletonFive />,
       className:
-        "col-span-1 lg:col-span-4 border-b lg:border-r dark:border-neutral-800",
+        "col-span-1 lg:col-span-3 border-b lg:border-r dark:border-neutral-800",
     },
     {
-      title: "Realistic Voice, Music, AI Images & videos",
-      description:
-        "Create stunning, photorealistic images with advanced AI models. Perfect for any video style or genre.",
+      title: "Realistic AI Images & Videos",
+      description: "Generate stunning, photorealistic images with advanced AI.",
       skeleton: <SkeletonTwo />,
-      className: "border-b col-span-1 lg:col-span-2 dark:border-neutral-800",
+      className: "border-b col-span-1 lg:col-span-3 dark:border-neutral-800",
     },
     {
-      title: "AI Script Generation",
-      description:
-        "Generate compelling scripts with AI. Choose a style, voice, and background to create engaging video content in seconds.",
-      skeleton: <SkeletonThree />,
-      className:
-        "col-span-1 lg:col-span-3 lg:border-r  dark:border-neutral-800",
+      title: "Turn Images into Videos",
+      description: "Make your images move. Add motion to any photo instantly.",
+      skeleton: <SkeletonSix />,
+      className: "col-span-1 lg:col-span-2 lg:border-r dark:border-neutral-800",
     },
     {
-      title: "Create in 29 Languages",
+      title: "Human-like Voiceovers",
       description:
-        "Create stories in any languages powered by Elevenlabs & Openai.",
-      skeleton: <SkeletonFour />,
-      className: "col-span-1 lg:col-span-3 border-b lg:border-none",
+        "Add natural-sounding voices powered by ElevenLabs & OpenAI.",
+      skeleton: <SkeletonSeven />,
+      className: "col-span-1 lg:col-span-2 lg:border-r dark:border-neutral-800",
+    },
+    {
+      title: "Beautiful Captions",
+      description: "Every video includes customizable, engaging captions.",
+      skeleton: <SkeletonEight />,
+      className: "col-span-1 lg:col-span-2",
     },
   ];
   return (
@@ -49,12 +51,12 @@ export default function FeaturesSectionDemo() {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}>
         <h4 className="mx-auto max-w-5xl text-center text-3xl font-medium tracking-tight text-black dark:text-white lg:text-5xl lg:leading-tight">
-          Everything you need to create a viral video
+          Creating Stories Made Simple
         </h4>
 
         <p className="mx-auto my-4 max-w-2xl text-center text-sm font-normal text-neutral-500 dark:text-neutral-300 lg:text-base">
-          From idea to viral video, our AI does it all giving you plug-and-play
-          tools to create content that spreads in minutes.
+          From text prompts to stunning videos, generate any style of content in
+          seconds with our powerful AI tools.
         </p>
       </motion.div>
 
@@ -110,13 +112,12 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
   );
 };
 
-export const SkeletonOne = () => {
+export const SkeletonFive = () => {
   return (
     <div className="relative flex h-full gap-10 px-2 py-8">
       <div className="group mx-auto h-full w-full bg-white p-5 shadow-2xl dark:bg-neutral-900">
         <div className="flex h-full w-full flex-1 flex-col space-y-2">
-          {/* AI Script Generation Interface */}
-
+          {/* Text to Video Tool Interface */}
           <video
             autoPlay
             loop
@@ -124,7 +125,7 @@ export const SkeletonOne = () => {
             playsInline
             className="object-bottom-left relative bottom-8 h-full w-full object-cover">
             <source
-              src="https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Video%20Editor%20Demo%20Compressed.mp4"
+              src="https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Script%20Writing%20Demo.mp4"
               type="video/mp4"
             />
           </video>
@@ -158,7 +159,11 @@ export const SkeletonThree = () => {
 };
 
 export const SkeletonTwo = () => {
-  const components = [VoiceSelector, ImageVideoCompare, VoiceSelector];
+  const images = [
+    "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=600&h=800&fit=crop",
+    "https://images.unsplash.com/photo-1682687220015-186f63b8850a?w=600&h=800&fit=crop",
+    "https://images.unsplash.com/photo-1682687221038-404cb8830901?w=600&h=800&fit=crop",
+  ];
 
   const imageVariants = {
     whileHover: {
@@ -175,7 +180,7 @@ export const SkeletonTwo = () => {
   return (
     <div className="relative flex h-full flex-col items-start gap-10 overflow-hidden p-8">
       <div className="-ml-20 flex flex-row">
-        {components.map((Component, idx) => (
+        {images.map((src, idx) => (
           <motion.div
             variants={imageVariants}
             key={"images-first" + idx}
@@ -185,22 +190,34 @@ export const SkeletonTwo = () => {
             whileHover="whileHover"
             whileTap="whileTap"
             className="-mr-4 mt-4 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1 dark:border-neutral-700 dark:bg-neutral-800">
-            <Component />
+            <img
+              src={src}
+              alt={`AI generated image ${idx + 1}`}
+              width={400}
+              height={400}
+              className="h-40 w-40 object-cover md:h-52 md:w-52"
+            />
           </motion.div>
         ))}
       </div>
       <div className="flex flex-row">
-        {components.map((Component, idx) => (
+        {images.map((src, idx) => (
           <motion.div
             variants={imageVariants}
-            key={"images-first" + idx}
+            key={"images-second" + idx}
             style={{
               rotate: Math.random() * 20 - 10,
             }}
             whileHover="whileHover"
             whileTap="whileTap"
             className="-mr-4 mt-4 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1 dark:border-neutral-700 dark:bg-neutral-800">
-            <Component />
+            <img
+              src={src}
+              alt={`AI generated image ${idx + 1}`}
+              width={400}
+              height={400}
+              className="h-40 w-40 object-cover md:h-52 md:w-52"
+            />
           </motion.div>
         ))}
       </div>
@@ -269,7 +286,7 @@ export const Globe = ({ className }: { className?: string }) => {
 
 export const ImageVideoCompare = () => {
   return (
-    <div className="flex items-center justify-center bg-neutral-100 dark:bg-neutral-900">
+    <div className="flex items-center justify-center dark:bg-neutral-900">
       <ImageVideoCompareComponent />
     </div>
   );
@@ -277,11 +294,11 @@ export const ImageVideoCompare = () => {
 
 const ImageVideoCompareComponent = () => {
   return (
-    <div className="relative size-40 select-none overflow-hidden rounded-lg">
+    <div className="relative aspect-square h-full w-full select-none overflow-hidden rounded-lg">
       <Compare
         firstImage="https://assets.cursorshorts.com/cursorshorts/assets/landingPage/JohnWickCathedral.jpg"
         secondImage=""
-        className="size-40 rounded-lg"
+        className="aspect-square w-full rounded-lg"
         slideMode="hover"
         showHandlebar={true}
         autoplay={false}
@@ -309,12 +326,12 @@ export const VoiceSelector = () => {
     { name: "Antoni", description: "Deep and rich", isPlaying: false },
     { name: "Domi", description: "Confident and strong", isPlaying: false },
     { name: "Bella", description: "Warm and friendly", isPlaying: true },
-    // { name: "Bryan", description: "Male, old", isPlaying: false },
-    // { name: "Audrey", description: "Female, middle-aged", isPlaying: false },
+    { name: "Bryan", description: "Male, old", isPlaying: false },
+    { name: "Audrey", description: "Female, middle-aged", isPlaying: false },
   ];
 
   return (
-    <div className="mx-auto overflow-hidden rounded-lg bg-white p-2 shadow-lg dark:bg-neutral-900 md:h-40 md:w-40">
+    <div className="mx-auto overflow-hidden rounded-lg bg-white p-2 shadow-lg dark:bg-neutral-900 md:h-full md:w-full">
       <div className="space-y-4">
         {voices.map((voice) => (
           <VoiceItem key={voice.name} voice={voice} />
@@ -359,6 +376,54 @@ const VoiceItem = ({
           </button>
         )}
       </div>
+    </div>
+  );
+};
+
+export const SkeletonSix = () => {
+  return (
+    <div className="relative flex h-full items-center justify-center overflow-hidden p-8">
+      <div className="relative h-full w-full max-w-xs">
+        <ImageVideoCompare />
+      </div>
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 h-60 w-full bg-gradient-to-t from-white via-white to-transparent dark:from-black dark:via-black" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-40 h-60 w-full bg-gradient-to-b from-white via-transparent to-transparent dark:from-black" />
+    </div>
+  );
+};
+
+export const SkeletonSeven = () => {
+  return (
+    <div className="relative flex h-full items-center justify-center overflow-hidden p-8">
+      <div className="w-full">
+        <VoiceSelector />
+      </div>
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 h-60 w-full bg-gradient-to-t from-white via-white to-transparent dark:from-black dark:via-black" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-40 h-60 w-full bg-gradient-to-b from-white via-transparent to-transparent dark:from-black" />
+    </div>
+  );
+};
+
+export const SkeletonEight = () => {
+  return (
+    <div className="relative flex h-full items-center justify-center overflow-hidden p-2">
+      <div className="relative h-64 w-full max-w-sm overflow-hidden rounded-lg">
+        <img
+          src="https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=600&h=800&fit=crop"
+          alt="Video with captions preview"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 transform">
+          <div className="rounded-lg bg-black/80 px-6 py-3 text-center">
+            <p className="text-lg font-bold text-yellow-400">DID YOU</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 h-60 w-full bg-gradient-to-t from-white via-white to-transparent dark:from-black dark:via-black" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-40 h-60 w-full bg-gradient-to-b from-white via-transparent to-transparent dark:from-black" />
     </div>
   );
 };
