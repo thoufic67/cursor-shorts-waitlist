@@ -24,7 +24,7 @@ export default function Form({ handleRedirect }: FormProps) {
           onClick={handleRedirect}
           iconPlacement="right"
           className="mt-2 w-full text-lg">
-          Start creating viral videos
+          Start creating viral shorts
         </EnhancedButton>
       </motion.div>
       <motion.div

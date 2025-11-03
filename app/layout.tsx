@@ -12,7 +12,7 @@ const FigtreeFont = Figtree({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "CursorShorts",
-  description: "Create Viral AI videos easily",
+  description: "Create Viral AI shorts easily",
   icons: {
     icon: [
       { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "CursorShorts",
-    description: "Create Viral AI videos easily",
+    description: "Create Viral AI shorts easily",
     url: "https://cursorshorts.com",
     siteName: "CursorShorts",
     images: [
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "CursorShorts",
-    description: "Create Viral AI videos easily",
+    description: "Create Viral AI shorts easily",
     images: ["/favicon/android-chrome-512x512.png"],
   },
 };
