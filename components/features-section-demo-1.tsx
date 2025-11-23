@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/lib/animation-variants";
 import { IconPlayerPlay, IconPlayerPause } from "@tabler/icons-react";
 import { Compare } from "@/components/ui/compare";
+import Image from "next/image";
 
 export default function FeaturesSectionDemo() {
   const features = [
@@ -118,7 +119,7 @@ export const SkeletonFive = () => {
       <div className="group mx-auto h-full w-full bg-white p-5 shadow-2xl dark:bg-neutral-900">
         <div className="flex h-full w-full flex-1 flex-col space-y-2">
           {/* Text to Video Tool Interface */}
-          <video
+          {/* <video
             autoPlay
             loop
             muted
@@ -128,7 +129,14 @@ export const SkeletonFive = () => {
               src="https://assets.cursorshorts.com/cursorshorts/assets/landingPage/Script%20Writing%20Demo.mp4"
               type="video/mp4"
             />
-          </video>
+          </video> */}
+          <Image
+            src="https://assets.cursorshorts.com/cursorshorts/assets/landingPage/ai%20script.webp"
+            alt="script writing demo"
+            width={800}
+            height={800}
+            className="object-bottom-left h-full w-full object-cover"
+          />
         </div>
       </div>
 

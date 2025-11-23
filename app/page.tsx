@@ -6,6 +6,7 @@ import FeaturesSectionDemo from "@/components/features-section-demo-1";
 import CTASection from "@/components/cta-section";
 import FAQ from "@/components/faq";
 import Particles from "@/components/ui/particles";
+import { VideoCreationSteps } from "@/components/video-creation-steps";
 
 export default function Home() {
   useEffect(() => {
@@ -57,6 +58,8 @@ export default function Home() {
       <div id="features">
         <FeaturesSectionDemo />
       </div>
+
+      <VideoCreationSteps />
 
       <CTASection />
 

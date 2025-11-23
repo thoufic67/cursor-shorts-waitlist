@@ -227,8 +227,8 @@ export default function Footer() {
 
       <div className="mx-auto">
         <motion.div variants={itemVariants} className="flex justify-center">
-          <div className="h-12 w-full sm:h-48">
-            <TextHoverEffect text="cursorshorts.com" />
+          <div className="h-12 w-full sm:h-96 drop-shadow">
+            <TextHoverEffect text="cursorshorts" />
           </div>
         </motion.div>
       </div>
