@@ -10,8 +10,7 @@ export default function TermsOfService() {
         <p>
           By using <strong>CursorShorts</strong> (&quot;Service&quot; or &quot;Services&quot;), you
           agree to be bound by these Terms of Service (&quot;Terms&quot;). CursorShorts is
-          built and operated by <strong>Mohammed Thoufic</strong> and{" "}
-          <strong>Ajan Raj</strong> (&quot;we&quot;, &quot;us&quot;).
+          built and operated by <strong>Mohammed Thoufic</strong> (&quot;we&quot;, &quot;us&quot;).
         </p>
         <p>
           We reserve the right to update and change these Terms at any time.

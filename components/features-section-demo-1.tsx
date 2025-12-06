@@ -198,7 +198,7 @@ export const SkeletonTwo = () => {
             whileHover="whileHover"
             whileTap="whileTap"
             className="-mr-4 mt-4 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1 dark:border-neutral-700 dark:bg-neutral-800">
-            <img
+            <Image
               src={src}
               alt={`AI generated image ${idx + 1}`}
               width={400}
@@ -219,7 +219,7 @@ export const SkeletonTwo = () => {
             whileHover="whileHover"
             whileTap="whileTap"
             className="-mr-4 mt-4 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1 dark:border-neutral-700 dark:bg-neutral-800">
-            <img
+            <Image
               src={src}
               alt={`AI generated image ${idx + 1}`}
               width={400}
@@ -418,9 +418,11 @@ export const SkeletonEight = () => {
   return (
     <div className="relative flex h-full items-center justify-center overflow-hidden p-2">
       <div className="relative h-64 w-full max-w-sm overflow-hidden rounded-lg">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=600&h=800&fit=crop"
           alt="Video with captions preview"
+          width={600}
+          height={800}
           className="h-full w-full object-cover"
         />
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 transform">

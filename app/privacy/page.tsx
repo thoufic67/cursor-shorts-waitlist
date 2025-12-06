@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
         <h2 className="text-2xl font-semibold">Who we are</h2>
         <p>
           CursorShorts is built and operated by{" "}
-          <strong>Mohammed Thoufic</strong> and <strong>Ajan Raj</strong>{" "}
+          <strong>Mohammed Thoufic</strong>
           (&quot;we&quot;, &quot;us&quot;, or &quot;Company&quot;). This Privacy
           Policy explains what information we collect, how we use it, who we
           share it with, and your rights.

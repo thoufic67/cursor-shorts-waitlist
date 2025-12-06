@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { IconDotsVertical } from "@tabler/icons-react";
 
@@ -203,14 +204,15 @@ export const Compare = ({
                 clipPath: `inset(0 ${100 - sliderXPercent}% 0 0)`,
               }}
               transition={{ duration: 0 }}>
-              <img
+              <Image
                 alt="first image"
                 src={firstImage}
                 className={cn(
-                  "absolute inset-0 z-20 h-full w-full shrink-0 select-none rounded-2xl",
+                  "absolute inset-0 z-20 h-full w-full shrink-0 select-none rounded-2xl object-cover",
                   firstImageClassName,
                 )}
                 draggable={false}
+                fill
               />
             </motion.div>
           ) : null}
@@ -219,15 +221,20 @@ export const Compare = ({
 
       <AnimatePresence initial={false}>
         {secondImage ? (
-          <motion.img
+          <motion.div
             className={cn(
-              "absolute left-0 top-0 z-[19] h-full w-full select-none rounded-2xl",
+              "absolute left-0 top-0 z-[19] h-full w-full select-none rounded-2xl overflow-hidden",
               secondImageClassname,
             )}
-            alt="second image"
-            src={secondImage}
-            draggable={false}
-          />
+          >
+            <Image
+              alt="second image"
+              src={secondImage}
+              draggable={false}
+              fill
+              className="object-cover"
+            />
+          </motion.div>
         ) : null}
       </AnimatePresence>
     </div>
