@@ -6,6 +6,7 @@ import Features from '@/components/features';
 import Footer from '@/components/footer';
 import ModelShowcase from '@/components/ui/model-showcase';
 import CTASection from '@/components/cta-section';
+import FAQ from '@/components/faq';
 
 function App() {
   return (
@@ -15,8 +16,8 @@ function App() {
         <Hero />
         <VideoGallery />
         <Features />
-<CTASection/>
-        
+        <CTASection />
+        <FAQ />
         {/* <ModelShowcase /> */}
       </main>
       {/* <Footer /> */}
