@@ -95,7 +95,7 @@ export default function HeroSection() {
     posthog?.capture("login_button_clicked", {
       location: "hero_section",
     });
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL + '/create-video';
     if (appUrl) {
       window.location.href = appUrl;
     }
