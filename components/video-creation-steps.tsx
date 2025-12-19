@@ -1,219 +1,111 @@
 "use client";
 
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
-import { useState, useEffect } from "react";
-
-const videoTypes = [
-  {
-    name: "Faceless",
-    icon: "👤",
-    gradient: "from-purple-500 to-pink-500",
-  },
-  {
-    name: "UGC",
-    icon: "📱",
-    gradient: "from-blue-500 to-cyan-500",
-  },
-  {
-    name: "ASMR",
-    icon: "🎧",
-    gradient: "from-green-500 to-emerald-500",
-  },
-];
-
-const VideoTypeSelector = ({ selectedType }: { selectedType: string }) => {
-  return (
-    <div className="flex h-full w-full items-center justify-center">
-      <div className="relative h-full w-full overflow-hidden rounded-lg p-8">
-        <div className="flex h-full items-center justify-center">
-          <div className="w-full max-w-md text-center">
-            <p className="mb-6 text-sm font-semibold uppercase tracking-wide text-neutral-400">
-              Select Video Type
-            </p>
-            <div className="flex justify-center gap-3 flex-wrap">
-              {videoTypes.map((type) => {
-                const isSelected = type.name === selectedType;
-                return (
-                  <button
-                    key={type.name}
-                    className={`group relative flex items-center gap-4 rounded-full p-4 transition-all duration-500 ${
-                      isSelected
-                        ? `bg-gradient-to-r ${type.gradient} scale-105 shadow-lg`
-                        : "bg-neutral-700/50 hover:scale-105 hover:bg-neutral-700 hover:shadow-lg"
-                    }`}>
-                    <div className="text-left">
-                      <p className="text-lg font-semibold">{type.name}</p>
-                    </div>
-                    {isSelected && (
-                      <svg
-                        className="h-6 w-6 animate-in fade-in"
-                        fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import { useState } from "react";
 
 export function VideoCreationSteps() {
-  const [selectedVideoType, setSelectedVideoType] = useState("");
   const [activeStepIndex, setActiveStepIndex] = useState(-1);
-
-  // Update selected video type based on scroll position
-  useEffect(() => {
-    if (activeStepIndex === 0) {
-      setSelectedVideoType("UGC");
-    }
-  }, [activeStepIndex]);
 
   const content = [
     {
-      title: "1. Select Video Type",
-      description:
-        "Choose from various video types and preview your selection. Each type comes with optimized templates and options tailored for different content styles and platforms.",
-      content: <VideoTypeSelector selectedType={selectedVideoType} />,
-    },
-    {
-      title: "2. Enter Your Script",
+      title: "1. Enter Your Script",
       description:
         "Write or paste your video script. Our AI will analyze your content to ensure optimal pacing, timing, and voice-over synchronization for maximum viewer engagement.",
       content: (
-        <div className="flex h-full w-full items-center justify-center">
-          <div className="relative h-full w-full overflow-hidden rounded-lg p-8">
-            <div className="flex h-full flex-col justify-center">
-              <div className="space-y-3">
-                <div className="h-3 w-3/4 rounded bg-neutral-600"></div>
-                <div className="h-3 w-full rounded bg-neutral-600"></div>
-                <div className="h-3 w-5/6 rounded bg-neutral-600"></div>
-                <div className="h-3 w-full rounded bg-neutral-600"></div>
-                <div className="h-3 w-2/3 rounded bg-neutral-600"></div>
+        <div className="h-full w-full flex items-center justify-center text-white">
+          <div className="w-full max-w-[350px] aspect-[4/5] bg-[#191919] rounded-xl border border-neutral-800 shadow-2xl overflow-hidden flex flex-col p-8 text-left">
+            {/* Notion Header */}
+            <div className="mb-6">
+              <div className="text-4xl mb-4">📝</div>
+              <h3 className="text-2xl font-bold text-neutral-100 mb-2 font-sans">Viral Script</h3>
+              <div className="flex items-center gap-2 text-xs text-neutral-500 border-b border-neutral-800 pb-4 w-full">
+                <span>Add cover</span>
+                <span>•</span>
+                <span>Add comment</span>
               </div>
-              <div className="mt-6 flex items-center gap-2">
-                <div className="h-2 w-2 animate-pulse rounded-full bg-purple-500"></div>
-                <p className="text-xs">AI analyzing script...</p>
-              </div>
+            </div>
+
+            {/* Notion Body */}
+            <div className="text-sm text-neutral-300 space-y-4 font-sans leading-relaxed">
+              <p className="text-neutral-400 font-medium"># Hook</p>
+              <p>Did you know that 90% of people scroll past boring content?</p>
+              <p className="flex items-center gap-2 p-2 rounded bg-brand-blue/10 text-brand-blue border border-brand-blue/20 text-xs">
+                <span className="text-base">💡</span>
+                Make this punchy!
+              </p>
+              <p>Here is how to fix it in 3 steps...</p>
+              <div className="w-0.5 h-4 bg-neutral-400 animate-pulse inline-block align-middle ml-1"></div>
             </div>
           </div>
         </div>
       ),
     },
     {
-      title: "3. Select Music and Voice",
+      title: "2. Select Music and Voice",
       description:
         "Choose from curated music options and AI voices tailored to your video type. Each combination is optimized to enhance your content's mood and bring your script to life with the perfect narration.",
       content: (
-        <div className="flex h-full w-full items-center justify-center">
-          <div className="relative h-full w-full overflow-hidden rounded-lg p-8">
-            <div className="flex h-full flex-col justify-center">
-              <div className="space-y-4">
-                {/* Voice Selection */}
-                <div className="mb-6">
-                  <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-neutral-400">
-                    AI Voice
-                  </p>
-                  <div className="flex items-center gap-4 rounded-lg bg-neutral-700/50 p-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500">
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
-                        />
-                      </svg>
-                    </div>
-                    <div className="flex-1">
-                      <div className="mb-1 h-3 w-32 rounded bg-neutral-600"></div>
-                      <div className="h-2 w-24 rounded bg-neutral-700"></div>
-                    </div>
-                  </div>
-                </div>
-                {/* Music Selection */}
-                <div>
-                  <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-neutral-400">
-                    Background Music
-                  </p>
-                  {[1, 2].map((i) => (
-                    <div
-                      key={i}
-                      className="mb-3 flex items-center gap-4 rounded-lg bg-neutral-700/50 p-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-emerald-500">
-                        <svg
-                          className="h-6 w-6"
-                          fill="currentColor"
-                          viewBox="0 0 24 24">
-                          <path d="M9 18.7l.7-.7L4 12.3V12l5.7-5.7-.7-.7L3 12z" />
-                          <path d="M9 5v14l11-7z" />
-                        </svg>
-                      </div>
-                      <div className="flex-1">
-                        <div className="mb-1 h-3 w-32 rounded bg-neutral-600"></div>
-                        <div className="h-2 w-24 rounded bg-neutral-700"></div>
-                      </div>
-                    </div>
-                  ))}
+        <div className="h-full w-full flex items-center justify-center text-white">
+          <div className="w-full max-w-[350px] aspect-[4/5] flex flex-col gap-4 items-center justify-center text-center">
+
+            {/* Voice Card */}
+            <div className="bg-neutral-900 rounded-2xl border border-neutral-800 p-4 shadow-xl relative overflow-hidden group hover:border-brand-blue/50 transition-colors">
+              <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
+                <div className="flex gap-0.5 items-end h-4">
+                  <div className="w-1 h-2 bg-brand-blue animate-pulse"></div>
+                  <div className="w-1 h-4 bg-brand-blue animate-pulse delay-75"></div>
+                  <div className="w-1 h-3 bg-brand-blue animate-pulse delay-150"></div>
                 </div>
               </div>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-lg">🎙️</div>
+                <div>
+                  <div className="font-semibold text-sm">Adam (American)</div>
+                  <div className="text-xs text-neutral-500">Deep & Authoritative</div>
+                </div>
+              </div>
+              <div className="h-8 w-full bg-neutral-800/50 rounded flex items-center px-2 gap-1 overflow-hidden">
+                {/* Fake Waveform */}
+                {Array.from({ length: 20 }).map((_, i) => (
+                  <div key={i} className="w-1 bg-neutral-600 rounded-full" style={{ height: `${Math.random() * 100}%` }}></div>
+                ))}
+              </div>
             </div>
+
+            {/* Music Card */}
+            <div className="bg-neutral-900 rounded-2xl border border-neutral-800 p-4 shadow-xl flex items-center gap-3 group hover:border-green-500/50 transition-colors">
+              <div className="w-12 h-12 rounded-lg bg-neutral-800 relative overflow-hidden flex-shrink-0">
+                <div className="absolute inset-0 bg-gradient-to-tr from-green-500/20 to-emerald-500/20"></div>
+                <div className="absolute inset-0 flex items-center justify-center">🎵</div>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-semibold text-sm truncate">Lo-Fi Chill Beats</div>
+                <div className="text-xs text-neutral-500 truncate">Trending Now</div>
+              </div>
+              <div className="w-6 h-6 rounded-full border border-neutral-700 flex items-center justify-center">
+                <div className="w-0 h-0 border-t-[4px] border-t-transparent border-l-[6px] border-l-white border-b-[4px] border-b-transparent ml-0.5"></div>
+              </div>
+            </div>
+
           </div>
         </div>
       ),
     },
     {
-      title: "4. Video Generated",
+      title: "3. Video Generated",
       description:
         "Your complete video is ready! Our AI has combined your script, selected visuals, and music to create a polished, engaging video ready to share with your audience.",
       content: (
-        <div className="flex h-full w-full items-center justify-center">
-          <div className="relative h-full w-full overflow-hidden rounded-lg p-8">
-            <div className="flex h-full flex-col items-center justify-center">
-              <div className="relative mb-4">
-                <div className="flex h-40 w-40 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500">
-                  <svg
-                    className="h-20 w-20"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <div className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-full bg-green-500">
-                  <svg
-                    className="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p className="mb-2 text-lg font-semibold">Video Complete!</p>
-              <p className="text-sm">Ready to download & share</p>
-            </div>
+        <div className="h-full w-full flex items-center justify-center text-white relative">
+          <img
+            src="/assets/features/ugc-gameplay.png"
+            alt="Generated Video Preview"
+            className="h-full object-cover rounded-2xl border-4 border-neutral-800 shadow-2xl"
+          />
+          <div className="absolute inset-0 flex items-center justify-center p-6 rounded-2xl z-10">
+            <p className="text-2xl font-bold text-white text-center drop-shadow-md bg-black/50 p-2 rounded-lg">
+              Did you know that 90% of people scroll past boring content?
+            </p>
           </div>
         </div>
       ),
@@ -225,7 +117,7 @@ export function VideoCreationSteps() {
       <div className="container mx-auto px-4 py-20">
         <div className="mb-12 text-center">
           <h2 className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">
-            Create Videos in 4 Easy Steps
+            Create Videos in 3 Easy Steps
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
             Our AI-powered platform makes video creation effortless. From
