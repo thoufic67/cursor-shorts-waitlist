@@ -43,13 +43,13 @@ export default function Footer() {
             </div>
           </motion.div>
           <div className="flex space-x-4">
-            <Link href="#" className="hover: text-gray-400 transition-colors">
+            <Link href="https://www.instagram.com/thouficexplains/" className="hover: text-gray-400 transition-colors">
               <Instagram className="h-5 w-5" />
             </Link>
-            <Link href="#" className="hover: text-gray-400 transition-colors">
+            <Link href="https://twitter.com/thouficexplains" className="hover: text-gray-400 transition-colors">
               <Twitter className="h-5 w-5" />
             </Link>
-            <Link href="#" className="hover: text-gray-400 transition-colors">
+            <Link href="https://x.com/CursorShorts" className="hover: text-gray-400 transition-colors">
               <Linkedin className="h-5 w-5" />
             </Link>
           </div>

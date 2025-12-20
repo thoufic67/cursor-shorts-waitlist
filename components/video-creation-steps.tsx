@@ -2,6 +2,7 @@
 
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 import { useState } from "react";
+import { Youtube, Instagram, Share2, Play, Pause, SkipBack, SkipForward, Scissors } from "lucide-react";
 
 export function VideoCreationSteps() {
   const [activeStepIndex, setActiveStepIndex] = useState(-1);
@@ -110,6 +111,73 @@ export function VideoCreationSteps() {
         </div>
       ),
     },
+    {
+      title: "4. Edit & Publish",
+      description:
+        "Fine-tune your masterpiece with our built-in editor. Trim, cut, and adjust before publishing directly to YouTube, Instagram, and TikTok.",
+      content: (
+        <div className="h-full w-full flex items-center justify-center text-white p-2">
+          <div className="w-full h-full bg-neutral-900 rounded-xl border border-neutral-800 shadow-2xl overflow-hidden flex flex-col relative group">
+            {/* Editor Preview Area */}
+            <div className="flex-1 relative overflow-hidden bg-black">
+              <img
+                src="/assets/features/ugc-gameplay.png"
+                alt="Editor Preview"
+                className="h-full w-full object-cover opacity-80"
+              />
+              {/* Editor Overlays */}
+              <div className="absolute bottom-4 left-4 right-4 bg-neutral-800/80 backdrop-blur-md rounded-lg p-2 border border-neutral-700">
+                {/* Timeline Mockup */}
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex gap-2 text-neutral-400">
+                    <SkipBack size={14} />
+                    <Play size={14} fill="currentColor" />
+                    <SkipForward size={14} />
+                  </div>
+                  <div className="text-xs text-neutral-400 font-mono">00:15 / 00:45</div>
+                </div>
+                <div className="h-8 bg-neutral-900 rounded border border-neutral-700 relative overflow-hidden">
+                  <div className="absolute inset-y-0 left-0 w-1/3 bg-blue-500/30 border-r-2 border-blue-500"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1/2 flex gap-0.5 opacity-30">
+                    {Array.from({ length: 40 }).map((_, i) => (
+                      <div key={i} className="w-1 bg-white rounded-full" style={{ height: `${Math.random() * 100}%` }}></div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Action Buttons */}
+              <div className="absolute top-4 right-4 flex flex-col gap-2">
+                <div className="p-2 bg-neutral-800/80 backdrop-blur-md rounded-lg border border-neutral-700 hover:bg-neutral-700 transition cursor-pointer">
+                  <Scissors size={16} className="text-neutral-300" />
+                </div>
+              </div>
+
+            </div>
+
+            {/* Publish Bar */}
+            <div className="p-4 bg-neutral-950 border-t border-neutral-800 flex flex-col gap-3">
+              <div className="text-xs font-medium text-neutral-400 uppercase tracking-wider text-center">Ready to share?</div>
+              <div className="flex justify-center gap-4">
+                <button className="h-10 w-10 rounded-full bg-red-600 flex items-center justify-center hover:scale-110 transition-transform shadow-lg shadow-red-900/20">
+                  <Youtube size={20} className="text-white" />
+                </button>
+                <button className="h-10 w-10 rounded-full bg-gradient-to-tr from-yellow-400 via-orange-500 to-purple-600 flex items-center justify-center hover:scale-110 transition-transform shadow-lg shadow-purple-900/20">
+                  <Instagram size={20} className="text-white" />
+                </button>
+                <button className="h-10 w-10 rounded-full bg-black border border-neutral-800 flex items-center justify-center hover:scale-110 transition-transform shadow-lg hover:border-neutral-600 relative overflow-hidden">
+                  {/* Simple TikTok Icon Substitute as it's not in Lucide default sometimes, otherwise use SVG */}
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white z-10">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                  </svg>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#00f2ea]/20 to-[#ff0050]/20 mix-blend-overlay"></div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
   ];
 
   return (
@@ -117,7 +185,7 @@ export function VideoCreationSteps() {
       <div className="container mx-auto px-4 py-20">
         <div className="mb-12 text-center">
           <h2 className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">
-            Create Videos in 3 Easy Steps
+            Create Videos in 4 Easy Steps
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
             Our AI-powered platform makes video creation effortless. From
