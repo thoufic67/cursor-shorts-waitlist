@@ -13,7 +13,7 @@ export function VideoCreationSteps() {
         "Write or paste your video script. Our AI will analyze your content to ensure optimal pacing, timing, and voice-over synchronization for maximum viewer engagement.",
       content: (
         <div className="h-full w-full flex items-center justify-center text-white">
-          <div className="w-full max-w-[350px] aspect-[4/5] bg-[#191919] rounded-xl border border-neutral-800 shadow-2xl overflow-hidden flex flex-col p-8 text-left">
+          <div className="w-full h-full bg-[#191919] rounded-xl border border-neutral-800 shadow-2xl overflow-hidden flex flex-col p-8 text-left">
             {/* Notion Header */}
             <div className="mb-6">
               <div className="text-4xl mb-4">📝</div>
@@ -46,7 +46,7 @@ export function VideoCreationSteps() {
         "Choose from curated music options and AI voices tailored to your video type. Each combination is optimized to enhance your content's mood and bring your script to life with the perfect narration.",
       content: (
         <div className="h-full w-full flex items-center justify-center text-white">
-          <div className="w-full max-w-[350px] aspect-[4/5] flex flex-col gap-4 items-center justify-center text-center">
+          <div className="w-full h-full flex flex-col gap-4 items-center justify-center text-center">
 
             {/* Voice Card */}
             <div className="bg-neutral-900 rounded-2xl border border-neutral-800 p-4 shadow-xl relative overflow-hidden group hover:border-brand-blue/50 transition-colors">
@@ -127,6 +127,7 @@ export function VideoCreationSteps() {
       </div>
       <StickyScroll
         content={content}
+        contentClassName="w-[500px] h-[550px]"
         onActiveIndexChange={setActiveStepIndex}
       />
     </section>
