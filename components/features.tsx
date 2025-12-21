@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import Image from "next/image";
-import { Sparkles, Mic2 } from 'lucide-react';
+import { Sparkles, Mic2, Bot, Paperclip, ArrowUp, Globe } from 'lucide-react';
 
 const FadeInWhenVisible = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -200,6 +200,60 @@ const Features: React.FC = () => {
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold mb-2">Localize in every <span className="font-serif italic font-normal text-gray-300">language</span></h3>
                 <p className="text-gray-400">Accurate translation in more than 30 languages. Reach the world.</p>
+              </div>
+            </div>
+          </FadeInWhenVisible>
+
+
+          {/* Feature 6: AI Agent */}
+          <FadeInWhenVisible delay={200} className="h-full md:col-span-2">
+            <div className="rounded-3xl bg-[#111111] border border-gray-800 p-8 min-h-[500px] flex flex-col items-center justify-between relative overflow-hidden h-full group">
+
+              <div className="flex flex-col gap-4 mb-8 w-full max-w-lg relative z-10 mt-8">
+                {/* Mock Chat UI */}
+                {/* Input Interface - Lovable Style */}
+                <div className="w-full bg-[#1c1c1c] rounded-3xl border border-gray-800 p-6 shadow-2xl transition-all duration-500 hover:shadow-blue-900/10 group-hover:border-gray-700">
+
+                  {/* Input Area */}
+                  <div className="mb-12">
+                    <p className="text-gray-400 text-lg font-light mb-2">Ask Agent to create a video...</p>
+                    <div className="flex items-center gap-2">
+                      <span className="text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded text-sm">@Creative Assistant</span>
+                    </div>
+                  </div>
+
+                  {/* Bottom Controls */}
+                  <div className="flex items-center justify-between">
+
+                    {/* Left Actions */}
+                    <div className="flex items-center gap-2">
+                      <button className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-800/50 hover:bg-gray-800 text-gray-400 text-sm transition-colors border border-transparent hover:border-gray-700">
+                        <Paperclip size={14} />
+                        <span>Attach</span>
+                      </button>
+                      <button className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-800/50 hover:bg-gray-800 text-gray-400 text-sm transition-colors border border-transparent hover:border-gray-700">
+                        <Globe size={14} />
+                        <span>Web Search</span>
+                      </button>
+                    </div>
+
+                    {/* Right Actions */}
+                    <div className="flex items-center gap-3">
+                      <button className="text-gray-400 hover:text-white transition-colors">
+                        <Mic2 size={20} />
+                      </button>
+                      <button className="w-8 h-8 bg-white rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors">
+                        <ArrowUp size={18} className="text-black" />
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 text-center relative z-10 max-w-2xl mx-auto">
+                <h3 className="text-2xl md:text-3xl font-bold mb-2">Smart <span className="font-serif italic font-normal text-gray-300">AI Agent</span></h3>
+                <p className="text-gray-400">Chat with the agent to help you create prompts and breakdown the videos.</p>
               </div>
             </div>
           </FadeInWhenVisible>
