@@ -50,7 +50,7 @@ export default function Footer() {
             <Link href="https://twitter.com/thouficexplains" className="hover: text-gray-400 transition-colors">
               <Twitter className="h-5 w-5" />
             </Link>
-            <Link href="https://x.com/CursorShorts" className="hover: text-gray-400 transition-colors">
+            <Link href="https://www.linkedin.com/company/107043574" className="hover: text-gray-400 transition-colors">
               <Linkedin className="h-5 w-5" />
             </Link>
           </div>
