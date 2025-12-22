@@ -36,6 +36,13 @@ export default function NavigationBar() {
     }
   };
 
+  const handleBookDemoClick = () => {
+    posthog?.capture('book_demo_clicked', {
+      location: 'navbar'
+    });
+    window.open('https://calendar.app.google/4aCD4y8rWUTkyGqP8', '_blank');
+  };
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: { name: string; link: string }) => {
     // If it's a hash link, handle smooth scrolling
     if (item.link.startsWith("#")) {
@@ -70,9 +77,14 @@ export default function NavigationBar() {
       <NavBody>
         <NavbarLogo />
         <NavItems items={navigation} onItemClick={handleNavClick} />
-        <NavbarButton onClick={handleLoginClick} variant="primary">
-          Login
-        </NavbarButton>
+        <div className="flex gap-2">
+          <NavbarButton onClick={handleBookDemoClick} variant="dark" className="rounded-full">
+            Book a Demo
+          </NavbarButton>
+          <NavbarButton onClick={handleLoginClick} variant="primary" className="rounded-full">
+            Login
+          </NavbarButton>
+        </div>
       </NavBody>
 
       <MobileNav>
@@ -90,6 +102,12 @@ export default function NavigationBar() {
               {item.name}
             </a>
           ))}
+          <NavbarButton
+            onClick={handleBookDemoClick}
+            variant="secondary"
+            className="w-full">
+            Book a Demo
+          </NavbarButton>
           <NavbarButton
             onClick={handleLoginClick}
             variant="primary"
