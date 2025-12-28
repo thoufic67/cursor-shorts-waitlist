@@ -14,7 +14,7 @@ function App() {
       {/* <Navbar /> */}
       <main>
         <Hero />
-        <VideoGallery />
+        {/* <VideoGallery /> */}
         <Features />
         <CTASection />
         <FAQ />
