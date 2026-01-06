@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Hero from "@/components/hero";
 import FeaturesAutoshorts from "@/components/features-autoshorts";
 import CTASection from "@/components/cta-section";
+import Pricing from '@/components/pricing';
 import FAQ from "@/components/faq";
 import { VideoCreationSteps } from "@/components/video-creation-steps";
 
@@ -38,6 +39,8 @@ export default function AutoshortsPage() {
         <FeaturesAutoshorts />
 
         <VideoCreationSteps />
+
+        <Pricing />
 
         <CTASection />
 

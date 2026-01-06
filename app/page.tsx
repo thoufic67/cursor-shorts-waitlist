@@ -6,6 +6,7 @@ import Features from '@/components/features';
 import Footer from '@/components/footer';
 import ModelShowcase from '@/components/ui/model-showcase';
 import CTASection from '@/components/cta-section';
+import Pricing from '@/components/pricing';
 import FAQ from '@/components/faq';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Hero />
         {/* <VideoGallery /> */}
         <Features />
+        <Pricing />
         <CTASection />
         <FAQ />
         {/* <ModelShowcase /> */}
