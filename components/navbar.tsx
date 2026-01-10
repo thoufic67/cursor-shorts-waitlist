@@ -17,6 +17,7 @@ import { usePostHog } from "posthog-js/react";
 
 const navigation = [
   { name: "Features", link: "#features" },
+  { name: "Pricing", link: "#pricing" },
   { name: "Autoshorts", link: "/autoshorts" },
 ];
 
