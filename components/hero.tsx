@@ -204,7 +204,7 @@ const Hero: React.FC<{
           >
             {title || (
               <>
-                Create shorts <br />
+                Create AI videos <br />
                 <span className="text-4xl sm:text-5xl md:text-7xl">10x faster</span> <span className="font-serif italic font-normal text-4xl sm:text-5xl md:text-7xl text-brand-blue">using AI</span>
               </>
             )}
