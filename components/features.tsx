@@ -62,7 +62,7 @@ const Features: React.FC = () => {
                 onClick={() => window.location.href = 'https://app.cursorshorts.com'}
               >
                 <Sparkles className="w-4 h-4 mr-2 text-white" />
-                Create Your AI Short
+                Create Your AI Video
               </Button>
             </div>
             {/* Visual representation of stacked cards */}

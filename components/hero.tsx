@@ -86,7 +86,7 @@ const Hero: React.FC<{
 }> = ({
   title,
   subtitle,
-  ctaText = "Create Your AI Short",
+  ctaText = "Create Your AI Video",
   ctaLink = "https://app.cursorshorts.com",
   onCtaClick,
   images = CARD_IMAGES
